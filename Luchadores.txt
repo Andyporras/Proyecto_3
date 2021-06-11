@@ -13,3 +13,19 @@ Volar:0
 Elasticidad:0
 Regeneracion:0
 --------------------------------------------------
+Nombre Completo:Midorilla
+Tipo:Héroe
+Sexo:Hombre
+Nombre Completo:Midorrilla
+Nombre de su alter ego:Deku
+velocidad:15
+Fuerza:40
+Inteligencia:20
+Defensa Personal: 0
+Magia: 0
+Telepatía:0
+Estrategia:20
+Volar:5
+Elasticidad:0
+Regeneracion:0
+--------------------------------------------------
