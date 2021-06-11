@@ -1,0 +1,15 @@
+Tipo:Héroe
+Sexo:Hombre
+Nombre Completo:Bruce Wayne
+Nombre de su alter ego:Batman
+velocidad:0
+Fuerza:5
+Inteligencia:45
+Defensa Personal: 5
+Magia: 0
+Telepatía:0
+Estrategia:45
+Volar:0
+Elasticidad:0
+Regeneracion:0
+--------------------------------------------------
