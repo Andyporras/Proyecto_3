@@ -112,8 +112,8 @@ class DefiniciónDeLosPersonajes(Archivos):
         etiqueta=tkinter.Label(vtnPersonaje, text="Selecciona el Sexo:",
                                font=("Times New Roman",14),bg="SteelBlue3",
                                fg="Black").place(x=130,y=130)
-        comboHV=ttk.Combobox(vtnPersonaje, values=("Mujer", "Hombre","No determinado"))
-        comboHV.place(x=135,y=160)
+        comboHV2=ttk.Combobox(vtnPersonaje, values=("Mujer", "Hombre","No determinado"))
+        comboHV2.place(x=135,y=160)
         #
         etiqueta=tkinter.Label(vtnPersonaje,text="Escriba el nombre del Personaje:",
                                font=("Times New Roman",14),
@@ -135,8 +135,10 @@ class DefiniciónDeLosPersonajes(Archivos):
             a=DefiniciónDeLosPersonajes()
             
             if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+alterEgo.get()+"\n")):
-                vtnPersonaje.destroy()
-                return menuPersonaje2()
+
+                return menuPersonaje2(comboHV.get(),comboHV2.get(),entry4.get(),alterEgo)
+
+                
             else:
                 messagebox.showerror("Error","El alter ego de su personaje ya existe")
                     
@@ -145,7 +147,7 @@ class DefiniciónDeLosPersonajes(Archivos):
                              bg="DeepSkyBlue4", fg="Black", command=validarPersonaje)
         boton.place(x=160,y=320)
     #################################
-        def menuPersonaje2():
+        def menuPersonaje2(tipo,sexo,nombre,alterEgo):
             vtnPersonaje.destroy()
             vtnPersonaje2=Tk()
             vtnPersonaje2.geometry("500x600")
@@ -229,10 +231,10 @@ class DefiniciónDeLosPersonajes(Archivos):
             etiqueta=tkinter.Label(vtnPersonaje2,text="Volar",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=250,y=350)
-            entry13=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry13.place(x=200,y=380)
+            #entry13=tkinter.Entry(vtnPersonaje2,text="",
+                                    #font=("Times New Roman",12),
+                                    #bg="SteelBlue1", fg="Black")
+            #entry13.place(x=200,y=380)
             #
             etiqueta=tkinter.Label(vtnPersonaje2,text="Elasticidad",
                                font=("Times New Roman",12),
@@ -250,11 +252,28 @@ class DefiniciónDeLosPersonajes(Archivos):
                                     bg="SteelBlue1", fg="Black")
             entry15.place(x=200,y=450)
 
-            
-                
+            def validarPoderes():
+                #print(int(entry5.get()),int(entry6.get()),(int(entry7.get()))+(int(entry8.get()))+(int(entry9.get())))
+                suma=0
+                suma+=int(entry5.get())
+                suma+=(int(entry6.get()))+(int(entry7.get()))+(int(entry8.get()))+(int(entry9.get()))
+                #print(suma)
+                #print(int(entry10.get())+(int(entry11.get()))+(int(entry12.get()))+(int(entry13.get())))
+                suma+=int(entry10.get())
+                suma+=int(entry11.get())
+                suma+=int(entry12.get())
+                #print(entry13.get())
+                #suma+=int(entry13.get())
+                suma+=int(entry14.get())
+                suma+=int(entry15.get())
+                print(suma)
+                if(suma==100):
+                    vtnPersonaje2.destroy()
+                else:
+                    messagebox.showerror("Error","La suma de las habilidades no suma 100")
             
             boton=tkinter.Button(vtnPersonaje2,text="Crear Personaje",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="Black")#,command=validarPersonaje)
+                                 bg="DeepSkyBlue4", fg="Black",command=validarPoderes)
             boton.place(x=350,y=550)
             
             
