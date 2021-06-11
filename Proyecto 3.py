@@ -7,7 +7,7 @@ from tkinter import ttk
 class Archivos:
     def __init__(self):
         self.Acceso=open("acceso.txt")
-        #self.Luchadores=open("Luchadores.txt")
+        self.Luchadores=open("Luchadores.txt")
     def datosAcceso(self):
 
         return self.Acceso.readlines()
