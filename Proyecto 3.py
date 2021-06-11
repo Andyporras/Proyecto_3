@@ -136,7 +136,7 @@ class DefiniciónDeLosPersonajes(Archivos):
             
             if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+alterEgo.get()+"\n")):
 
-                return menuPersonaje2(comboHV.get(),comboHV2.get(),entry4.get(),alterEgo)
+                return menuPersonaje2(comboHV.get(),comboHV2.get(),entry4.get(),alterEgo.get())
 
                 
             else:
@@ -268,6 +268,27 @@ class DefiniciónDeLosPersonajes(Archivos):
                 suma+=int(entry15.get())
                 print(suma)
                 if(suma==100):
+                    archivo=open("Luchadores.txt","a")
+                    
+                    #tipo,sexo,nombre,alterEgo)
+                    print(nombre)
+                    archivo.write("Tipo:"+tipo+"\n")
+                    archivo.write("Sexo:"+sexo+"\n")
+                    archivo.write("Nombre Completo:"+nombre+"\n")
+                    archivo.write("Nombre de su alter ego:"+alterEgo+"\n")
+                    archivo.write("velocidad:"+entry5.get()+"\n")
+                    archivo.write("Fuerza:"+entry6.get()+"\n")
+                    archivo.write("Inteligencia:"+entry7.get()+"\n")                    
+                    archivo.write("Defensa Personal: "+entry8.get()+"\n")
+                    archivo.write("Magia: "+entry9.get()+"\n")
+                    archivo.write("Telepatía:"+entry10.get()+"\n")
+                    archivo.write("Estrategia:"+entry11.get()+"\n")
+                    archivo.write("Volar:"+entry12.get()+"\n")
+                    archivo.write("Elasticidad:"+entry14.get()+"\n")
+                    archivo.write("Regeneracion:"+entry15.get()+"\n")
+                    archivo.write("--------------------------------------------------"+"\n")
+                    archivo.close()
+
                     vtnPersonaje2.destroy()
                 else:
                     messagebox.showerror("Error","La suma de las habilidades no suma 100")
