@@ -296,8 +296,100 @@ class DefiniciónDeLosPersonajes(Archivos):
             boton=tkinter.Button(vtnPersonaje2,text="Crear Personaje",font=("Times New Roman",14),
                                  bg="DeepSkyBlue4", fg="Black",command=validarPoderes)
             boton.place(x=350,y=550)
-            
-            
 
-a=GranTorino()
-a.menu()
+#----------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#Ventana del menu principal/Inicial
+def menuInicial():
+    ventanaIni=Tk()
+    ventanaIni.geometry("400x400")
+    ventanaIni.title("Menú Principal")
+    ventanaIni.config(bg="SteelBlue3", cursor="hand2")
+
+    tkinter.Label(ventanaIni, text="۝    MENÚ PRINCIPAL    ۝",
+                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                  fg="Black").pack(fill=tkinter.X)
+    etiqueta=tkinter.Label(ventanaIni,
+                           text="¡Bienvenido al juego!\n Elija una de las siguientes opciones\n¡Que te Diviertas!",
+                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=55,y=32)
+    tkinter.Label(ventanaIni, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
+    #
+    btn1=tkinter.Button(ventanaIni,text="     Crear     \n  Personaje  ",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black")
+    btn1.place(x=50,y=150)
+    #
+    btn2=tkinter.Button(ventanaIni,text="     Crear     \n   Torneo   ",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black", command=lambda:ventanaTorneo())
+    btn2.place(x=230,y=150)
+    #
+    btn3=tkinter.Button(ventanaIni,text="   Estadisticas  \n    De Las Luchas  ",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black")
+    btn3.place(x=130,y=235)
+    #
+    btnSalir=tkinter.Button(ventanaIni,text="   SALIR  \n    DEL JUEGO  ",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black").place(x=135,y=320)
+    #Decoración
+    tkinter.Label(ventanaIni, text="۝",
+                  font=("Times New Roman", 18),bg="SteelBlue3" ,
+                  fg="Black").place(x=1,y=370)
+    tkinter.Label(ventanaIni, text="۝",
+                  font=("Times New Roman", 18),bg="SteelBlue3" ,
+                  fg="Black").place(x=370,y=370)
+
+
+#Ventana del torneo
+def ventanaTorneo():
+    ventanaTorneo=Tk()
+    ventanaTorneo.geometry("400x400")
+    ventanaTorneo.title("Menú Principal")
+    ventanaTorneo.config(bg="SteelBlue3", cursor="hand2")
+
+    tkinter.Label(ventanaTorneo, text="۩        MENÚ DE TORNEOS        ۩",
+                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                  fg="Black").pack(fill=tkinter.X)
+    etiqueta=tkinter.Label(ventanaTorneo, text="¡Crea tu torneo ahora!",
+                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=40)
+    
+    etiqueta=tkinter.Label(ventanaTorneo,text="Escriba el nombre del torneo:",
+                           font=("Times New Roman",14),
+                           bg="SteelBlue3", fg="Black").place(x=85,y=70)
+    entry16=tkinter.Entry(ventanaTorneo,text="",
+                        font=("Times New Roman",14),
+                        bg="SteelBlue1", fg="Black")
+    entry16.place(x=105,y=95)
+    #
+    etiqueta=tkinter.Label(ventanaTorneo,text="Ingrese la fecha del torneo:",
+                           font=("Times New Roman",14),
+                           bg="SteelBlue3", fg="Black").place(x=95,y=120)
+    entry17=tkinter.Entry(ventanaTorneo,text="",
+                        font=("Times New Roman",14),
+                        bg="SteelBlue1", fg="Black")
+    entry17.place(x=105,y=145)
+    #
+    etiqueta=tkinter.Label(ventanaTorneo,text="Selecciona el Lugar del Torneo:",
+                           font=("Times New Roman",14),
+                           bg="SteelBlue3", fg="Black").place(x=80,y=170)
+    comboLugar=ttk.Combobox(ventanaTorneo, values=("La ciudad Oscura", "Limon","La Selva","---","..."))
+    comboLugar.place(x=120,y=200)
+    #
+    etiqueta=tkinter.Label(ventanaTorneo,text="Selecciona el numero de Luchas:",
+                           font=("Times New Roman",14),
+                           bg="SteelBlue3", fg="Black").place(x=80,y=230)
+    comboNumLuchas=ttk.Combobox(ventanaTorneo, values=("1", "2","3","4","5"))
+    comboNumLuchas.place(x=120,y=260)
+    #
+    boton=tkinter.Button(ventanaTorneo,text="LUCHAR",font=("Times New Roman",14),
+                         bg="DeepSkyBlue4", fg="Black")
+    boton.place(x=150,y=360)
+
+
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+###############
+a=GranTorino()#
+a.menu()      #
+###############
