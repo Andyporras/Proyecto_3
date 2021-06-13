@@ -91,6 +91,23 @@ class GranTorino(Archivos):
 #-----------------------------------------------------------------------------------------------
 #PUNTO C
 class DefiniciónDeLosPersonajes(Archivos):
+    def __init__(self):
+        self.Tipo=""
+        self.Sexo=""
+        self.hombre=""
+        self.AlterEgo=""
+        self.velocidad=0
+        self.Fuerza=0
+        self.Inteligencia=0
+        self.DefensaPersonal=0
+        self.Magia=0
+        self.Telepatia=0
+        self.Estrategia=0
+        self.Volar=0
+        self.Elsticidad=0
+        self.Regeneracion=0
+
+        
         
     def menuPersonaje(self):
         vtnPersonaje=Tk()
