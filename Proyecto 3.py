@@ -22,6 +22,24 @@ class Archivos:
                 continue
         return True
 
+
+        
+
+
+
+
+#PUNTO E
+class DefiniciónDeLasLuchas: #Punto e
+    def __init__(self):
+        
+        self.alterEgoDePrimerLuchador =""
+        self.alterEgoDelSegundoLuchador="" 
+        self.Ganador1erRound=""
+        self.Ganador2doRound=""
+        self.Ganador3erRound=""
+        self.GanadorDeLaLucha =""
+
+        
         
 class GranTorino(Archivos):
 
@@ -90,7 +108,7 @@ class GranTorino(Archivos):
         boton.place(x=160,y=320)
 #-----------------------------------------------------------------------------------------------
 #PUNTO C
-class DefiniciónDeLosPersonajes(Archivos):
+class DefiniciónDeLosPersonajes:
     def __init__(self):
         self.Tipo=""
         self.Sexo=""
@@ -106,8 +124,6 @@ class DefiniciónDeLosPersonajes(Archivos):
         self.Volar=0
         self.Elsticidad=0
         self.Regeneracion=0
-
-        
         
     def menuPersonaje(self):
         vtnPersonaje=Tk()
@@ -353,12 +369,18 @@ class MenuPrincipal:
             ventanaIni.destroy()
             
                        
-        btn1=tkinter.Button(ventanaIni,text="     Crear     \n  Personaje  ",font=("Times New Roman",14),
+        btn1=tkinter.Button(ventanaIni,text="     Crear y Borrar\n  Personaje  ",font=("Times New Roman",14),
                                  bg="DeepSkyBlue4", fg="Black",command=Crear)
         btn1.place(x=50,y=150)
         #
-        btn2=tkinter.Button(ventanaIni,text="     Crear     \n   Torneo   ",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="Black", command=lambda:ventanaTorneo())
+        def Torneo():
+            a=DefiniciónDelTorneo()
+            a.ventanaTorneo()
+            ventanaIni.destroy()
+            
+        
+        btn2=tkinter.Button(ventanaIni,text="     Crear y Borrar\n   Torneo   ",font=("Times New Roman",14),
+                                 bg="DeepSkyBlue4", fg="Black",command=Torneo)
         btn2.place(x=230,y=150)
         #
         btn3=tkinter.Button(ventanaIni,text="   Estadisticas  \n    De Las Luchas  ",font=("Times New Roman",14),
@@ -377,7 +399,15 @@ class MenuPrincipal:
 
 
 
-        
+#PUNTO D
+class DefiniciónDelTorneo:#Punto d
+    def __init__(self):
+        self.NombreDelTorneo=[]
+        self.Fecha=[]
+        self.LugarDelTorneo=[]
+        self.NúmeroDeLuchas=0 
+        self.Luchas= []
+        self.BandoGanador=""
     def ventanaTorneo(self):
         ventanaTorneo=Tk()
         ventanaTorneo.geometry("400x400")
@@ -422,25 +452,7 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black")
         boton.place(x=150,y=360)
 
-class DefiniciónDelTorneo:#Punto d
-    def __init__(self):
-        self.NombreDelTorneo=[]
-        self.Fecha=[]
-        self.LugarDelTorneo=[]
-        self.NúmeroDeLuchas=0 
-        self.Luchas= []
-        self.BandoGanador=""
 
-class DefiniciónDeLasLuchas: #Punto e
-    def __init__(self):
-        
-        self.alterEgoDePrimerLuchador =""
-        self.alterEgoDelSegundoLuchador="" 
-        self.Ganador1erRound=""
-        self.Ganador2doRound=""
-        self.Ganador3erRound=""
-        self.GanadorDeLaLucha =""
-        
 
 
 
