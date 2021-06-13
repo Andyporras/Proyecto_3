@@ -13,7 +13,6 @@ Volar:0
 Elasticidad:0
 Regeneracion:0
 --------------------------------------------------
-Nombre Completo:Midorilla
 Tipo:Héroe
 Sexo:Hombre
 Nombre Completo:Midorrilla
@@ -26,6 +25,21 @@ Magia: 0
 Telepatía:0
 Estrategia:20
 Volar:5
+Elasticidad:0
+Regeneracion:0
+--------------------------------------------------
+Tipo:Héroe
+Sexo:Hombre
+Nombre Completo:Roronoa Zoro
+Nombre de su alter ego:Casador de Piratas
+velocidad:30
+Fuerza:60
+Inteligencia:0
+Defensa Personal: 10
+Magia: 0
+Telepatía:0
+Estrategia:0
+Volar:0
 Elasticidad:0
 Regeneracion:0
 --------------------------------------------------
