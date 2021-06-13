@@ -290,8 +290,12 @@ class DefiniciónDeLosPersonajes(Archivos):
                     archivo.write("Regeneracion:"+entry15.get()+"\n")
                     archivo.write("--------------------------------------------------"+"\n")
                     archivo.close()
-
                     vtnPersonaje2.destroy()
+
+                    A=MenuPrincipal()
+                    A.menuInicial()
+
+                    
                 else:
                     messagebox.showerror("Error","La suma de las habilidades no suma 100")
             
@@ -355,7 +359,8 @@ class MenuPrincipal:
                       fg="Black").place(x=370,y=370)
 
 
-    #Ventana del torneo
+
+        
     def ventanaTorneo(self):
         ventanaTorneo=Tk()
         ventanaTorneo.geometry("400x400")
@@ -400,7 +405,29 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black")
         boton.place(x=150,y=360)
 
+class DefiniciónDelTorneo:#Punto d
+    def __init__(self):
+        self.NombreDelTorneo=[]
+        self.Fecha=[]
+        self.LugarDelTorneo=[]
+        self.NúmeroDeLuchas=0 
+        self.Luchas= []
+        self.BandoGanador=""
 
+class DefiniciónDeLasLuchas: #Punto e
+    def __init__(self):
+        
+        self.alterEgoDePrimerLuchador =""
+        self.alterEgoDelSegundoLuchador="" 
+        self.Ganador1erRound=""
+        self.Ganador2doRound=""
+        self.Ganador3erRound=""
+        self.GanadorDeLaLucha =""
+        
+
+
+
+        
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
