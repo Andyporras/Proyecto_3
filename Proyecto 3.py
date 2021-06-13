@@ -165,7 +165,9 @@ class DefiniciónDeLosPersonajes:
                             font=("Times New Roman",14),
                             bg="SteelBlue1", fg="Black")
         alterEgo.place(x=120,y=280)
-
+        #
+        boton=tkinter.Button(vtnPersonaje,text="Eliminar Personaje Existente",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black",command= eliminarPersonaje).place(x=10,y=400)
         def validarPersonaje():
             a=DefiniciónDeLosPersonajes()
             
@@ -336,6 +338,38 @@ class DefiniciónDeLosPersonajes:
                                  bg="DeepSkyBlue4", fg="Black",command=validarPoderes)
             boton.place(x=350,y=550)
 
+
+#-------------------------------------------------------------------------------
+
+def eliminarPersonaje():
+    vtnEliminarP=Tk()
+    vtnEliminarP.geometry("400x400")
+    vtnEliminarP.title("Eliminar Personaje")
+    vtnEliminarP.config(bg="SteelBlue3", cursor="hand2")
+
+    tkinter.Label(vtnEliminarP, text="۝   ELIMINAR PERSONAJE   ۝",
+                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                  fg="Black").pack(fill=tkinter.X)
+    etiqueta=tkinter.Label(vtnEliminarP,
+                            text="¿Deseas eliminar un personaje?\n Por favor llenar los campos requeridos\nPara eliminar el personaje",
+                            font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=45,y=32)
+    tkinter.Label(vtnEliminarP, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
+
+    etiqueta=tkinter.Label(vtnEliminarP,text="Escriba el nombre del personaje que desea Eliminar:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=5,y=200)
+    eliminarP=tkinter.Entry(vtnEliminarP,text="",
+                           font=("Times New Roman",14),
+                           bg="SteelBlue1", fg="Red")
+    eliminarP.place(x=110,y=230)
+    
+    botonE=tkinter.Button(vtnEliminarP,text="Eliminar Personaje",font=("Times New Roman",14),
+                                 bg="DeepSkyBlue4", fg="red")#,command=eliminarPersonajetxt())
+    botonE.place(x=120,y=275)
+
+
+
 #----------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
@@ -350,7 +384,7 @@ class MenuPrincipal:
     
     def menuInicial(self):
         ventanaIni=Tk()
-        ventanaIni.geometry("400x400")
+        ventanaIni.geometry("400x450")
         ventanaIni.title("Menú Principal")
         ventanaIni.config(bg="SteelBlue3", cursor="hand2")
 
@@ -369,7 +403,7 @@ class MenuPrincipal:
             ventanaIni.destroy()
             
                        
-        btn1=tkinter.Button(ventanaIni,text="     Crear y Borrar\n  Personaje  ",font=("Times New Roman",14),
+        btn1=tkinter.Button(ventanaIni,text=" Crear y Borrar\n  Personaje  ",font=("Times New Roman",14),
                                  bg="DeepSkyBlue4", fg="Black",command=Crear)
         btn1.place(x=50,y=150)
         #
@@ -379,7 +413,7 @@ class MenuPrincipal:
             ventanaIni.destroy()
             
         
-        btn2=tkinter.Button(ventanaIni,text="     Crear y Borrar\n   Torneo   ",font=("Times New Roman",14),
+        btn2=tkinter.Button(ventanaIni,text=" Crear y Borrar\n     Torneo   ",font=("Times New Roman",14),
                                  bg="DeepSkyBlue4", fg="Black",command=Torneo)
         btn2.place(x=230,y=150)
         #
@@ -387,18 +421,31 @@ class MenuPrincipal:
                                  bg="DeepSkyBlue4", fg="Black")
         btn3.place(x=130,y=235)
         #
+        btnJugarT=tkinter.Button(ventanaIni,text=" JUGAR TORNEO  ",font=("Times New Roman",14),
+                                 bg="DeepSkyBlue4", fg="Black", command=jugarTorneo).place(x=125,y=320)
+        #
         btnSalir=tkinter.Button(ventanaIni,text="   SALIR  \n    DEL JUEGO  ",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="Black").place(x=135,y=320)
+                                 bg="DeepSkyBlue4", fg="Black").place(x=135,y=380)
         #Decoración
         tkinter.Label(ventanaIni, text="۝",
                       font=("Times New Roman", 18),bg="SteelBlue3" ,
-                      fg="Black").place(x=1,y=370)
+                      fg="Black").place(x=1,y=420)
         tkinter.Label(ventanaIni, text="۝",
                       font=("Times New Roman", 18),bg="SteelBlue3" ,
-                      fg="Black").place(x=370,y=370)
+                      fg="Black").place(x=370,y=420)
+
+def jugarTorneo():
+    vtnJuegoT=Tk()
+    vtnJuegoT.geometry("400x400")
+    vtnJuegoT.title("Jugar Torneo")
+    vtnJuegoT.config(bg="SteelBlue3", cursor="hand2")
+
+    tkinter.Label(vtnJuegoT, text="۝   JUEGO TORNEO   ۝",
+                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                      fg="Black").pack(fill=tkinter.X)
 
 
-
+#----------------------------------------------------------------------------------------
 #PUNTO D
 class DefiniciónDelTorneo:#Punto d
     def __init__(self):
@@ -411,7 +458,7 @@ class DefiniciónDelTorneo:#Punto d
     def ventanaTorneo(self):
         ventanaTorneo=Tk()
         ventanaTorneo.geometry("400x400")
-        ventanaTorneo.title("Menú Principal")
+        ventanaTorneo.title("Menú Torneos")
         ventanaTorneo.config(bg="SteelBlue3", cursor="hand2")
 
         tkinter.Label(ventanaTorneo, text="۩        MENÚ DE TORNEOS        ۩",
@@ -450,8 +497,37 @@ class DefiniciónDelTorneo:#Punto d
         #
         boton=tkinter.Button(ventanaTorneo,text="LUCHAR",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black")
-        boton.place(x=150,y=360)
+        boton.place(x=150,y=300)
+        #
+        boton=tkinter.Button(ventanaTorneo,text="Eliminar un Torneo",font=("Times New Roman",14),
+                     bg="DeepSkyBlue4", fg="Black",command=eliminarTorneo)
+        boton.place(x=5,y=360)
+def eliminarTorneo():
+    vtnEliminarT=Tk()
+    vtnEliminarT.geometry("400x400")
+    vtnEliminarT.title("Eliminar Torneo")
+    vtnEliminarT.config(bg="SteelBlue3", cursor="hand2")
 
+    tkinter.Label(vtnEliminarT, text="۝   ELIMINAR TORNEO   ۝",
+                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                  fg="Black").pack(fill=tkinter.X)
+    etiqueta=tkinter.Label(vtnEliminarT,
+                           text="¿Deseas eliminar un torneo?\n Por favor llenar los campos requeridos\nPara eliminar el torneo",
+                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=45,y=32)
+    tkinter.Label(vtnEliminarT, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
+
+    etiqueta=tkinter.Label(vtnEliminarT,text="Escriba el nombre del torneo que desea Eliminar:",
+                           font=("Times New Roman",14),
+                           bg="SteelBlue3", fg="Black").place(x=5,y=200)
+    eliminarT=tkinter.Entry(vtnEliminarT,text="",
+                            font=("Times New Roman",14),
+                            bg="SteelBlue1", fg="Red")
+    eliminarT.place(x=110,y=230)
+
+    botonE2=tkinter.Button(vtnEliminarT,text="Eliminar Torneo",font=("Times New Roman",14),
+                          bg="DeepSkyBlue4", fg="red")#,command=eliminarTorneotxt())
+    botonE2.place(x=120,y=275)
 
 
 
