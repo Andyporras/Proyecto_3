@@ -498,7 +498,7 @@ class DefiniciónDelTorneo:#Punto d
         self.BandoGanador=""
     def ventanaTorneo(self):
         ventanaTorneo=Tk()
-        ventanaTorneo.geometry("400x400")
+        ventanaTorneo.geometry("450x530")
         ventanaTorneo.title("Menú Torneos")
         ventanaTorneo.config(bg="SteelBlue3", cursor="hand2")
 
@@ -506,71 +506,87 @@ class DefiniciónDelTorneo:#Punto d
                       font=("Times New Roman", 18),bg="RoyalBlue2" ,
                       fg="Black").pack(fill=tkinter.X)
         etiqueta=tkinter.Label(ventanaTorneo, text="¡Crea tu torneo ahora!",
-                               font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=40)
+                               font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=140,y=40)
         
         etiqueta=tkinter.Label(ventanaTorneo,text="Escriba el nombre del torneo:",
                                font=("Times New Roman",14),
-                               bg="SteelBlue3", fg="Black").place(x=85,y=70)
+                               bg="SteelBlue3", fg="Black").place(x=115,y=70)
         entry16=tkinter.Entry(ventanaTorneo,text="",
                             font=("Times New Roman",14),
                             bg="SteelBlue1", fg="Black")
-        entry16.place(x=105,y=95)
+        entry16.place(x=135,y=95)
         #
         etiqueta=tkinter.Label(ventanaTorneo,text="Ingrese la fecha del torneo:",
                                font=("Times New Roman",14),
-                               bg="SteelBlue3", fg="Black").place(x=95,y=120)
+                               bg="SteelBlue3", fg="Black").place(x=135,y=120)
         entry17=tkinter.Entry(ventanaTorneo,text="",
                             font=("Times New Roman",14),
                             bg="SteelBlue1", fg="Black")
-        entry17.place(x=105,y=145)
+        entry17.place(x=135,y=145)
         #
         etiqueta=tkinter.Label(ventanaTorneo,text="Selecciona el Lugar del Torneo:",
                                font=("Times New Roman",14),
-                               bg="SteelBlue3", fg="Black").place(x=80,y=170)
+                               bg="SteelBlue3", fg="Black").place(x=110,y=170)
         comboLugar=ttk.Combobox(ventanaTorneo, values=("La ciudad Oscura", "Limon","La Selva","---","..."))
-        comboLugar.place(x=120,y=200)
+        comboLugar.place(x=150,y=200)
         #
         etiqueta=tkinter.Label(ventanaTorneo,text="Selecciona el numero de Luchas:",
                                font=("Times New Roman",14),
-                               bg="SteelBlue3", fg="Black").place(x=80,y=230)
+                               bg="SteelBlue3", fg="Black").place(x=120,y=230)
         comboNumLuchas=ttk.Combobox(ventanaTorneo, values=("1", "2","3","4","5"))
-        comboNumLuchas.place(x=120,y=260)
+        comboNumLuchas.place(x=150,y=260)
         #
-        boton=tkinter.Button(ventanaTorneo,text="LUCHAR",font=("Times New Roman",14),
+        etiqueta=tkinter.Label(ventanaTorneo,text="Selecciona el modo de Lucha:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=5,y=290)
+        #
+        boton=tkinter.Button(ventanaTorneo,text="MANUAL",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black")
-        boton.place(x=150,y=300)
+        boton.place(x=10,y=320)
         #
+        boton=tkinter.Button(ventanaTorneo,text="PERSONA VS PROGRAMA",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black")
+        boton.place(x=10,y=355)
+        #
+        boton=tkinter.Button(ventanaTorneo,text="PROGRAMA VS PROGRAMA",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black")
+        boton.place(x=10,y=390)
+        #
+        tkinter.Label(ventanaTorneo, text="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" ,
+                      font=("Arial Black",10),bg="SteelBlue3",fg="Black").place(x=10,y=440)
+        #
+
+        def eliminarTorneo():
+            ventanaTorneo.destroy()
+            vtnEliminarT=Tk()
+            vtnEliminarT.geometry("400x400")
+            vtnEliminarT.title("Eliminar Torneo")
+            vtnEliminarT.config(bg="SteelBlue3", cursor="hand2")
+
+            tkinter.Label(vtnEliminarT, text="۝   ELIMINAR TORNEO   ۝",
+                          font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                          fg="Black").pack(fill=tkinter.X)
+            etiqueta=tkinter.Label(vtnEliminarT,
+                                   text="¿Deseas eliminar un torneo?\n Por favor llenar los campos requeridos\nPara eliminar el torneo",
+                                   font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=45,y=32)
+            tkinter.Label(vtnEliminarT, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                          font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
+
+            etiqueta=tkinter.Label(vtnEliminarT,text="Escriba el nombre del torneo que desea Eliminar:",
+                                   font=("Times New Roman",14),
+                                   bg="SteelBlue3", fg="Black").place(x=5,y=200)
+            eliminarT=tkinter.Entry(vtnEliminarT,text="",
+                                    font=("Times New Roman",14),
+                                    bg="SteelBlue1", fg="Red")
+            eliminarT.place(x=110,y=230)
+
+            botonE2=tkinter.Button(vtnEliminarT,text="Eliminar Torneo",font=("Times New Roman",14),
+                                  bg="DeepSkyBlue4", fg="red")#,command=eliminarTorneotxt())
+            botonE2.place(x=120,y=275)
+          #  
         boton=tkinter.Button(ventanaTorneo,text="Eliminar un Torneo",font=("Times New Roman",14),
                      bg="DeepSkyBlue4", fg="Black",command=eliminarTorneo)
-        boton.place(x=5,y=360)
-def eliminarTorneo():
-    vtnEliminarT=Tk()
-    vtnEliminarT.geometry("400x400")
-    vtnEliminarT.title("Eliminar Torneo")
-    vtnEliminarT.config(bg="SteelBlue3", cursor="hand2")
-
-    tkinter.Label(vtnEliminarT, text="۝   ELIMINAR TORNEO   ۝",
-                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
-                  fg="Black").pack(fill=tkinter.X)
-    etiqueta=tkinter.Label(vtnEliminarT,
-                           text="¿Deseas eliminar un torneo?\n Por favor llenar los campos requeridos\nPara eliminar el torneo",
-                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=45,y=32)
-    tkinter.Label(vtnEliminarT, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
-                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
-
-    etiqueta=tkinter.Label(vtnEliminarT,text="Escriba el nombre del torneo que desea Eliminar:",
-                           font=("Times New Roman",14),
-                           bg="SteelBlue3", fg="Black").place(x=5,y=200)
-    eliminarT=tkinter.Entry(vtnEliminarT,text="",
-                            font=("Times New Roman",14),
-                            bg="SteelBlue1", fg="Red")
-    eliminarT.place(x=110,y=230)
-
-    botonE2=tkinter.Button(vtnEliminarT,text="Eliminar Torneo",font=("Times New Roman",14),
-                          bg="DeepSkyBlue4", fg="red")#,command=eliminarTorneotxt())
-    botonE2.place(x=120,y=275)
-
-
+        boton.place(x=290,y=490)
 
 
         
