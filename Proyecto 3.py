@@ -27,12 +27,12 @@ class Archivos:
         
         while len(datos)>=indice:
             if(datos[indice]==eliminar):
-                while cont!=14:
+                while cont!=15:
                     datos.pop(indice-3)
                     cont+=1
                 return Convertir_A_String(datos)
             else:
-                indice+=14
+                indice+=15
         
                     
 def Convertir_A_String(lista):
