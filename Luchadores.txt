@@ -43,3 +43,18 @@ Volar:0
 Elasticidad:0
 Regeneracion:0
 --------------------------------------------------
+Tipo:Héroe
+Sexo:Hombre
+Nombre Completo:Sasaki Kojiro
+Nombre de su alter ego:El mayor perdedor
+velocidad:30
+Fuerza:25
+Inteligencia:5
+Defensa Personal: 5
+Magia: 0
+Telepatía:0
+Estrategia:35
+Volar:0
+Elasticidad:0
+Regeneracion:0
+--------------------------------------------------
