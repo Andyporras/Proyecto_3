@@ -21,6 +21,31 @@ class Archivos:
             else:
                 continue
         return True
+    def EliminarLuchador(self,eliminar,indice):
+        datos=a.DatoLuchadores
+        cont=0
+        
+        while len(datos)>=indice:
+            if(datos[indice]==eliminar):
+                while cont!=14:
+                    datos.pop(indice-3)
+                    cont+=1
+                return Convertir_A_String(datos)
+            else:
+                indice+=14
+        
+                    
+def Convertir_A_String(lista):
+    if isinstance(lista, list):#El parámetro de entrada debe de ser una lista(restricción).
+        string = ""
+        for linea in lista:
+            string += linea
+        return string
+    else:#Se imprime el error en el caso de que el parámetro de entrada no cumple con las restriciones predeterminadas.
+        #print("Error: No se puede convertir a string, debido a que el tipo de dato de entrada no es una lista.")
+        None
+               
+        
 
 
         
@@ -169,7 +194,7 @@ class DefiniciónDeLosPersonajes:
         boton=tkinter.Button(vtnPersonaje,text="Eliminar Personaje Existente",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black",command= eliminarPersonaje).place(x=10,y=400)
         def validarPersonaje():
-            a=DefiniciónDeLosPersonajes()
+            a=Archivos()
             
             if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+alterEgo.get()+"\n")):
 
@@ -356,16 +381,32 @@ def eliminarPersonaje():
     tkinter.Label(vtnEliminarP, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
                   font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
 
-    etiqueta=tkinter.Label(vtnEliminarP,text="Escriba el nombre del personaje que desea Eliminar:",
+    etiqueta=tkinter.Label(vtnEliminarP,text="Escriba el arte ego del personaje que desea Eliminar:",
                                font=("Times New Roman",14),
                                bg="SteelBlue3", fg="Black").place(x=5,y=200)
     eliminarP=tkinter.Entry(vtnEliminarP,text="",
                            font=("Times New Roman",14),
                            bg="SteelBlue1", fg="Red")
     eliminarP.place(x=110,y=230)
+    def Eliminar():
+        if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n"))==False:
+           indice=a.BuscarIndiceLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n")
+           #A=Archivos()
+           eliminado=a.EliminarLuchador("Nombre de su alter ego:"+eliminarP.get()+"\n",indice)
+           Archivo=open("Luchadores.txt","w")
+           Archivo.write(eliminado)
+           Archivo.close()
+           messagebox.showinfo("Eliminado","Luchador eliminado")
+           vtnEliminarP.destroy()
+           A=MenuPrincipal()
+           A.menuInicial()
+           
+
+           
+           
     
     botonE=tkinter.Button(vtnEliminarP,text="Eliminar Personaje",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="red")#,command=eliminarPersonajetxt())
+                                 bg="DeepSkyBlue4", fg="red",command=Eliminar)#,command=eliminarPersonajetxt())
     botonE.place(x=120,y=275)
 
 
@@ -425,7 +466,7 @@ class MenuPrincipal:
                                  bg="DeepSkyBlue4", fg="Black", command=jugarTorneo).place(x=125,y=320)
         #
         btnSalir=tkinter.Button(ventanaIni,text="   SALIR  \n    DEL JUEGO  ",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="Black").place(x=135,y=380)
+                                 bg="DeepSkyBlue4", fg="Black",command=ventanaIni.destroy).place(x=135,y=380)
         #Decoración
         tkinter.Label(ventanaIni, text="۝",
                       font=("Times New Roman", 18),bg="SteelBlue3" ,
