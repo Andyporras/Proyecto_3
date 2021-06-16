@@ -3,6 +3,7 @@ import tkinter
 from tkinter import*
 from tkinter import messagebox
 from tkinter import ttk
+from random import choice
 
 class Archivos:
     def __init__(self):
@@ -45,7 +46,94 @@ def Convertir_A_String(lista):
         #print("Error: No se puede convertir a string, debido a que el tipo de dato de entrada no es una lista.")
         None
                
+#PUNTO C
+class DefiniciónDeLosPersonajes:
+    def __init__(self):
         
+        self.Tipo=[]
+        self.Sexo=[]
+        self.Hombre=[]
+        self.AlterEgo=[]
+        self.velocidad=[]
+        self.Fuerza=[]
+        self.Inteligencia=[]
+        self.DefensaPersonal=[]
+        self.Magia=[]
+        self.Telepatia=[]
+        self.Estrategia=[]
+        self.Volar=[]
+        self.Elasticidad=[]
+        self.Regeneracion=[]
+
+        A=Archivos()
+        Personajes=A.DatoLuchadores
+        cont=0
+        for linea in Personajes:
+            print(linea)
+            print(cont)
+            if(cont==0):
+                self.Tipo+=[linea[5:-1]]
+                cont+=1
+            elif(cont==1):
+                self.Sexo+=[linea[5:-1]]
+                cont+=1
+            elif(cont==2):
+                self.Hombre=[linea[16:-1]]
+                cont+=1
+            elif(cont==3):
+                self.AlterEgo+=[linea[23:-1]]
+                cont+=1
+            elif(cont==4):
+                self.velocidad+=[linea[10:-1]]
+                cont+=1
+            elif(cont==5):
+                self.Fuerza+=[linea[7:-1]]
+                cont+=1
+            elif(cont==6):
+                self.Inteligencia+=[linea[13:-1]]
+                cont+=1
+            elif(cont==7):
+                self.DefensaPersonal+=[linea[18:-1]]
+                cont+=1
+            elif(cont==8):
+                self.Magia+=[linea[7:-1]]
+                cont+=1
+            elif(cont==9):
+                self.Telepatia+=[linea[10:-1]]
+                cont+=1
+            elif(cont==10):
+                self.Estrategia+=[linea[11:-1]]
+                cont+=1
+            elif(cont==11):
+                self.Volar+=[linea[6:-1]]
+                cont+=1
+            elif(cont==12):
+                self.Elasticidad+=[linea[6:-1]]
+                cont+=1
+            elif(cont==13):
+                self.Regeneracion+=[linea[13:-1]]
+                cont+=1
+            else:
+                cont=0
+                
+                
+                
+        
+    def verAlterEgo(self):
+        return self.AlterEgo
+
+#PUNTO D
+class DefiniciónDelTorneo:#Punto d
+    def __init__(self):
+        self.NombreDelTorneo=[]
+        self.Fecha=[]
+        self.LugarDelTorneo=[]
+        self.NúmeroDeLuchas=0 
+        self.Luchas= []
+        self.BandoGanador=[]
+
+    def agregarPersonajes(self):
+        return 
 
 
         
@@ -55,14 +143,14 @@ def Convertir_A_String(lista):
 
 #PUNTO E
 class DefiniciónDeLasLuchas: #Punto e
-    def __init__(self):
+    def __init__(self,luchador1,luchador2,Round1,Round2,Round3,ganador):
         
-        self.alterEgoDePrimerLuchador =""
-        self.alterEgoDelSegundoLuchador="" 
-        self.Ganador1erRound=""
-        self.Ganador2doRound=""
-        self.Ganador3erRound=""
-        self.GanadorDeLaLucha =""
+        self.alterEgoDePrimerLuchador =luchador1
+        self.alterEgoDelSegundoLuchador=luchador2
+        self.Ganador1erRound=Round1
+        self.Ganador2doRound=Round2
+        self.Ganador3erRound=Round3
+        self.GanadorDeLaLucha=ganador
 
         
         
@@ -132,23 +220,7 @@ class GranTorino(Archivos):
                              bg="DeepSkyBlue4", fg="Black",command=controlDeAcceso)
         boton.place(x=160,y=320)
 #-----------------------------------------------------------------------------------------------
-#PUNTO C
-class DefiniciónDeLosPersonajes:
-    def __init__(self):
-        self.Tipo=""
-        self.Sexo=""
-        self.hombre=""
-        self.AlterEgo=""
-        self.velocidad=0
-        self.Fuerza=0
-        self.Inteligencia=0
-        self.DefensaPersonal=0
-        self.Magia=0
-        self.Telepatia=0
-        self.Estrategia=0
-        self.Volar=0
-        self.Elsticidad=0
-        self.Regeneracion=0
+
         
     def menuPersonaje(self):
         vtnPersonaje=Tk()
@@ -439,7 +511,7 @@ class MenuPrincipal:
                       font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
         def Crear():
     
-            a=DefiniciónDeLosPersonajes()
+            a=GranTorino()
             a.menuPersonaje()
             ventanaIni.destroy()
             
@@ -449,7 +521,7 @@ class MenuPrincipal:
         btn1.place(x=50,y=150)
         #
         def Torneo():
-            a=DefiniciónDelTorneo()
+            a=MenuPrincipal()
             a.ventanaTorneo()
             ventanaIni.destroy()
             
@@ -475,27 +547,7 @@ class MenuPrincipal:
                       font=("Times New Roman", 18),bg="SteelBlue3" ,
                       fg="Black").place(x=370,y=420)
 
-def jugarTorneo():
-    vtnJuegoT=Tk()
-    vtnJuegoT.geometry("400x400")
-    vtnJuegoT.title("Jugar Torneo")
-    vtnJuegoT.config(bg="SteelBlue3", cursor="hand2")
 
-    tkinter.Label(vtnJuegoT, text="۝   JUEGO TORNEO   ۝",
-                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
-                      fg="Black").pack(fill=tkinter.X)
-
-
-#----------------------------------------------------------------------------------------
-#PUNTO D
-class DefiniciónDelTorneo:#Punto d
-    def __init__(self):
-        self.NombreDelTorneo=[]
-        self.Fecha=[]
-        self.LugarDelTorneo=[]
-        self.NúmeroDeLuchas=0 
-        self.Luchas= []
-        self.BandoGanador=""
     def ventanaTorneo(self):
         ventanaTorneo=Tk()
         ventanaTorneo.geometry("450x530")
@@ -539,9 +591,16 @@ class DefiniciónDelTorneo:#Punto d
         etiqueta=tkinter.Label(ventanaTorneo,text="Selecciona el modo de Lucha:",
                                font=("Times New Roman",14),
                                bg="SteelBlue3", fg="Black").place(x=5,y=290)
-        #
+            
+        def manual():
+            ventanaTorneo.destroy()
+            A=MenuPrincipal()
+            A.vManual()
+            
+            
+        
         boton=tkinter.Button(ventanaTorneo,text="MANUAL",font=("Times New Roman",14),
-                             bg="DeepSkyBlue4", fg="Black")
+                             bg="DeepSkyBlue4", fg="Black",command=manual)
         boton.place(x=10,y=320)
         #
         boton=tkinter.Button(ventanaTorneo,text="PERSONA VS PROGRAMA",font=("Times New Roman",14),
@@ -588,7 +647,66 @@ class DefiniciónDelTorneo:#Punto d
                      bg="DeepSkyBlue4", fg="Black",command=eliminarTorneo)
         boton.place(x=290,y=490)
 
+#--------------------------------------------------------------------------------
+        #########menu manual de crear Torneo#####
+    def vManual(self):
+        vtnPersonaje=Tk()
+        vtnPersonaje.geometry("400x450")
+        vtnPersonaje.title("Menú Torneo")
+        vtnPersonaje.config(bg="SteelBlue3", cursor="hand2")
+    
+        tkinter.Label(vtnPersonaje, text="۝   ELECION DE PERSONAJE   ۝",
+                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                  fg="Black").pack(fill=tkinter.X)
+        etiqueta=tkinter.Label(vtnPersonaje,
+                           text="elija a tu Personaje",
+                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=130,y=32)
 
+        datos=DefiniciónDeLosPersonajes()
+        luchadores=[]
+        
+        for linea in datos.AlterEgo:
+            print(datos.AlterEgo)
+            luchadores+=[linea]
+            
+        comboHV=ttk.Combobox(vtnPersonaje, values=luchadores)
+        comboHV.place(x=135,y=100)
+
+        comboHV2=ttk.Combobox(vtnPersonaje, values=luchadores)
+        comboHV2.place(x=135,y=130)
+
+        comboHV3=ttk.Combobox(vtnPersonaje, values=luchadores)
+        comboHV3.place(x=135,y=160)
+
+        comboHV4=ttk.Combobox(vtnPersonaje, values=luchadores)
+        comboHV4.place(x=135,y=190)
+
+        comboHV5=ttk.Combobox(vtnPersonaje, values=luchadores)
+        comboHV5.place(x=135,y=210)
+
+        boton=tkinter.Button(vtnPersonaje,text="Continuar",font=("Times New Roman",14),
+                     bg="DeepSkyBlue4", fg="Black")
+        boton.place(x=150,y=250)
+
+        
+            
+        
+
+
+def jugarTorneo():
+    vtnJuegoT=Tk()
+    vtnJuegoT.geometry("400x400")
+    vtnJuegoT.title("Jugar Torneo")
+    vtnJuegoT.config(bg="SteelBlue3", cursor="hand2")
+
+    tkinter.Label(vtnJuegoT, text="۝   JUEGO TORNEO   ۝",
+                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                      fg="Black").pack(fill=tkinter.X)
+
+
+#----------------------------------------------------------------------------------------
+
+    
         
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
