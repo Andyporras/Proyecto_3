@@ -604,11 +604,11 @@ class MenuPrincipal:
         boton.place(x=10,y=320)
         #
         boton=tkinter.Button(ventanaTorneo,text="PERSONA VS PROGRAMA",font=("Times New Roman",14),
-                             bg="DeepSkyBlue4", fg="Black")
+                             bg="DeepSkyBlue4", fg="Black", command=JugvsIA)
         boton.place(x=10,y=355)
         #
         boton=tkinter.Button(ventanaTorneo,text="PROGRAMA VS PROGRAMA",font=("Times New Roman",14),
-                             bg="DeepSkyBlue4", fg="Black")
+                             bg="DeepSkyBlue4", fg="Black", command= IA)
         boton.place(x=10,y=390)
         #
         tkinter.Label(ventanaTorneo, text="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" ,
@@ -659,8 +659,19 @@ class MenuPrincipal:
                   font=("Times New Roman", 18),bg="RoyalBlue2" ,
                   fg="Black").pack(fill=tkinter.X)
         etiqueta=tkinter.Label(vtnPersonaje,
-                           text="elija a tu Personaje",
-                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=130,y=32)
+                           text="Elija a los Personajes\ncon los que desea Luchar",
+                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=32)
+
+        tkinter.Label(vtnPersonaje, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                          font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
+
+
+
+        etiqueta=tkinter.Label(vtnPersonaje,
+                               text="Seleccionar Luchadores:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=120,y=130)
+
 
         datos=DefiniciónDeLosPersonajes()
         luchadores=[]
@@ -670,29 +681,139 @@ class MenuPrincipal:
             luchadores+=[linea]
             
         comboHV=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV.place(x=135,y=100)
+        comboHV.place(x=135,y=160)
 
         comboHV2=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV2.place(x=135,y=130)
+        comboHV2.place(x=135,y=190)
 
         comboHV3=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV3.place(x=135,y=160)
+        comboHV3.place(x=135,y=220)
 
         comboHV4=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV4.place(x=135,y=190)
+        comboHV4.place(x=135,y=250)
 
         comboHV5=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV5.place(x=135,y=210)
+        comboHV5.place(x=135,y=280)
 
         boton=tkinter.Button(vtnPersonaje,text="Continuar",font=("Times New Roman",14),
-                     bg="DeepSkyBlue4", fg="Black")
-        boton.place(x=150,y=250)
+                     bg="DeepSkyBlue4", fg="Black",command=vManual2)
+        boton.place(x=160,y=310)
 
+def vManual2():
+    vtnPersonaje2=Tk()
+    vtnPersonaje2.geometry("400x450")
+    vtnPersonaje2.title("Menú Torneo")
+    vtnPersonaje2.config(bg="SteelBlue3", cursor="hand2")
+    
+    tkinter.Label(vtnPersonaje2, text="۝   ELECION DE PERSONAJE   ۝",
+                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                  fg="Black").pack(fill=tkinter.X)
+    etiqueta=tkinter.Label(vtnPersonaje2,
+                           text="Elija a los contrincantes\ncon los que desea Luchar",
+                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=32)
+
+    tkinter.Label(vtnPersonaje2, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
+
+
+    etiqueta=tkinter.Label(vtnPersonaje2,
+                           text="Seleccionar Enemigos:",
+                           font=("Times New Roman",14),
+                           bg="SteelBlue3", fg="Black").place(x=120,y=130)
+
+
+    datos=DefiniciónDeLosPersonajes()
+    luchadores=[]
         
+    for linea in datos.AlterEgo:
+        print(datos.AlterEgo)
+        luchadores+=[linea]
             
+    comboHV6=ttk.Combobox(vtnPersonaje2, values=luchadores)
+    comboHV6.place(x=135,y=160)
+
+    comboHV7=ttk.Combobox(vtnPersonaje2, values=luchadores)
+    comboHV7.place(x=135,y=190)
+
+    comboHV8=ttk.Combobox(vtnPersonaje2, values=luchadores)
+    comboHV8.place(x=135,y=220)
+
+    comboHV9=ttk.Combobox(vtnPersonaje2, values=luchadores)
+    comboHV9.place(x=135,y=250)
+
+    comboHV10=ttk.Combobox(vtnPersonaje2, values=luchadores)
+    comboHV10.place(x=135,y=280)
+
+    boton=tkinter.Button(vtnPersonaje2,text="LUCHAR",font=("Times New Roman",14),
+                         bg="DeepSkyBlue4", fg="Black")
+    boton.place(x=160,y=310)
+#-----------------------------------------------------------------------------------
+def JugvsIA():
+    vtnPerIA=Tk()
+    vtnPerIA.geometry("400x450")
+    vtnPerIA.title("Menú Torneo")
+    vtnPerIA.config(bg="SteelBlue3", cursor="hand2")
+    
+    tkinter.Label(vtnPerIA, text="۝   ELECION DE PERSONAJE   ۝",
+                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                  fg="Black").pack(fill=tkinter.X)
+    etiqueta=tkinter.Label(vtnPerIA,
+                           text="Elija a los Personajes\ncon los que desea Luchar",
+                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=32)
+
+    tkinter.Label(vtnPerIA, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
+
+
+
+    etiqueta=tkinter.Label(vtnPerIA,
+                           text="Seleccionar Luchadores:",
+                           font=("Times New Roman",14),
+                           bg="SteelBlue3", fg="Black").place(x=120,y=130)
+
+
+    datos=DefiniciónDeLosPersonajes()
+    luchadores=[]
         
+    for linea in datos.AlterEgo:
+        print(datos.AlterEgo)
+        luchadores+=[linea]
+            
+    comboHV11=ttk.Combobox(vtnPerIA, values=luchadores)
+    comboHV11.place(x=135,y=160)
+
+    comboHV12=ttk.Combobox(vtnPerIA, values=luchadores)
+    comboHV12.place(x=135,y=190)
+
+    comboHV13=ttk.Combobox(vtnPerIA, values=luchadores)
+    comboHV13.place(x=135,y=220)
+
+    comboHV14=ttk.Combobox(vtnPerIA, values=luchadores)
+    comboHV14.place(x=135,y=250)
+
+    comboHV15=ttk.Combobox(vtnPerIA, values=luchadores)
+    comboHV15.place(x=135,y=280)
+
+    boton=tkinter.Button(vtnPerIA,text="Continuar",font=("Times New Roman",14),
+                         bg="DeepSkyBlue4", fg="Black")
+    boton.place(x=160,y=310)
 
 
+
+def IA():
+    vtnIA=Tk()
+    vtnIA.geometry("400x450")
+    vtnIA.title("Menú Torneo")
+    vtnIA.config(bg="SteelBlue3", cursor="hand2")
+    
+    tkinter.Label(vtnIA, text="۝   IA   ۝",
+                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                  fg="Black").pack(fill=tkinter.X)
+    
+           
+            
+
+#-------------------------------------
 def jugarTorneo():
     vtnJuegoT=Tk()
     vtnJuegoT.geometry("400x400")
