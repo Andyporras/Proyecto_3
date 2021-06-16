@@ -10,6 +10,8 @@ class Archivos:
         self.Acceso=open("acceso.txt")
         self.Luchadores=open("Luchadores.txt")
         self.DatoLuchadores=self.Luchadores.readlines()
+        self.Torneos=open("Torneos.txt")
+        self.DatoTorneos=self.Torneos.readlines()
     def datosAcceso(self):
         return self.Acceso.readlines()
     def BuscarIndiceLuchadores(self,buscar):
@@ -128,9 +130,34 @@ class DefiniciónDelTorneo:#Punto d
         self.NombreDelTorneo=[]
         self.Fecha=[]
         self.LugarDelTorneo=[]
-        self.NúmeroDeLuchas=0 
-        self.Luchas= []
+        self.NúmeroDeLuchas=[]
+        self.Luchas=[]
         self.BandoGanador=[]
+
+        A=Archivos()
+        cont=0
+        for  linea in A.DatoTorneos:
+            if(cont==0):
+                self.NombreDelTorneo+=[linea[7:-1]]
+                cont+=1
+            elif(cont==1):
+                self.Fecha+=[linea[6:-1]]
+                cont+=1
+            elif(cont==2):
+                self.LugarDelTorneo+=[linea[17:-1]]
+                cont+=1
+            elif(cont==3):
+                self.NúmeroDeLuchas+=[linea[17:-1]]
+                cont+=1
+            elif(cont==4):
+                self.Luchas+=[linea[7:-1]]
+                cont+=1
+            elif(cont==5):
+                self.BandoGanador+=[linea[14:-1]]
+                cont+=1
+            else:
+                cont=0
+                        
 
     def agregarPersonajes(self):
         return 
@@ -677,7 +704,7 @@ class MenuPrincipal:
         luchadores=[]
         
         for linea in datos.AlterEgo:
-            print(datos.AlterEgo)
+            #print(datos.AlterEgo)
             luchadores+=[linea]
             
         comboHV=ttk.Combobox(vtnPersonaje, values=luchadores)
@@ -726,7 +753,7 @@ def vManual2():
     luchadores=[]
         
     for linea in datos.AlterEgo:
-        print(datos.AlterEgo)
+        #print(datos.AlterEgo)
         luchadores+=[linea]
             
     comboHV6=ttk.Combobox(vtnPersonaje2, values=luchadores)
@@ -776,7 +803,7 @@ def JugvsIA():
     luchadores=[]
         
     for linea in datos.AlterEgo:
-        print(datos.AlterEgo)
+        #print(datos.AlterEgo)
         luchadores+=[linea]
             
     comboHV11=ttk.Combobox(vtnPerIA, values=luchadores)
