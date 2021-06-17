@@ -58,3 +58,123 @@ Volar:0
 Elasticidad:0
 Regeneracion:0
 --------------------------------------------------
+Tipo:Héroe
+Sexo:Hombre
+Nombre Completo:Goku
+Nombre de su alter ego:Vegeta
+velocidad:20
+Fuerza:30
+Inteligencia:20
+Defensa Personal: 20
+Magia: 0
+Telepatía:0
+Estrategia:5
+Volar:5
+Elasticidad:0
+Regeneracion:0
+--------------------------------------------------
+Tipo:Villano
+Sexo:Hombre
+Nombre Completo:Vegeta
+Nombre de su alter ego:Goku
+velocidad:15
+Fuerza:20
+Inteligencia:15
+Defensa Personal: 10
+Magia: 0
+Telepatía:10
+Estrategia:20
+Volar:10
+Elasticidad:0
+Regeneracion:0
+--------------------------------------------------
+Tipo:Héroe
+Sexo:Hombre
+Nombre Completo:Kratos
+Nombre de su alter ego:El Enterrador
+velocidad:15
+Fuerza:25
+Inteligencia:10
+Defensa Personal: 10
+Magia: 5
+Telepatía:5
+Estrategia:15
+Volar:0
+Elasticidad:5
+Regeneracion:10
+--------------------------------------------------
+Tipo:Villano
+Sexo:Hombre
+Nombre Completo:El Enterrador
+Nombre de su alter ego:Kratos
+velocidad:10
+Fuerza:15
+Inteligencia:10
+Defensa Personal: 10
+Magia: 15
+Telepatía:5
+Estrategia:15
+Volar:0
+Elasticidad:0
+Regeneracion:20
+--------------------------------------------------
+Tipo:Héroe
+Sexo:Hombre
+Nombre Completo:Superman
+Nombre de su alter ego:Clark Kent
+velocidad:15
+Fuerza:15
+Inteligencia:10
+Defensa Personal: 5
+Magia: 15
+Telepatía:10
+Estrategia:10
+Volar:20
+Elasticidad:0
+Regeneracion:0
+--------------------------------------------------
+Tipo:Héroe
+Sexo:Mujer
+Nombre Completo:Mujer maravilla
+Nombre de su alter ego:Princesa Diana
+velocidad:10
+Fuerza:10
+Inteligencia:10
+Defensa Personal: 5
+Magia: 15
+Telepatía:0
+Estrategia:10
+Volar:20
+Elasticidad:0
+Regeneracion:20
+--------------------------------------------------
+Tipo:Villano
+Sexo:No determinado
+Nombre Completo:Scorpion
+Nombre de su alter ego:Kronika
+velocidad:5
+Fuerza:15
+Inteligencia:10
+Defensa Personal: 10
+Magia: 30
+Telepatía:0
+Estrategia:10
+Volar:4
+Elasticidad:6
+Regeneracion:10
+--------------------------------------------------
+Tipo:Héroe
+Sexo:Hombre
+Nombre Completo:Sasuke Uchiha
+Nombre de su alter ego:Pain
+velocidad:20
+Fuerza:10
+Inteligencia:10
+Defensa Personal: 10
+Magia: 30
+Telepatía:0
+Estrategia:10
+Volar:5
+Elasticidad:5
+Regeneracion:0
+--------------------------------------------------
