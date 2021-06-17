@@ -71,8 +71,8 @@ class DefiniciónDeLosPersonajes:
         Personajes=A.DatoLuchadores
         cont=0
         for linea in Personajes:
-            print(linea)
-            print(cont)
+            #print(linea)
+            #print(cont)
             if(cont==0):
                 self.Tipo+=[linea[5:-1]]
                 cont+=1
@@ -133,31 +133,7 @@ class DefiniciónDelTorneo:#Punto d
         self.NúmeroDeLuchas=[]
         self.Luchas=[]
         self.BandoGanador=[]
-
-        A=Archivos()
-        cont=0
-        for  linea in A.DatoTorneos:
-            if(cont==0):
-                self.NombreDelTorneo+=[linea[7:-1]]
-                cont+=1
-            elif(cont==1):
-                self.Fecha+=[linea[6:-1]]
-                cont+=1
-            elif(cont==2):
-                self.LugarDelTorneo+=[linea[17:-1]]
-                cont+=1
-            elif(cont==3):
-                self.NúmeroDeLuchas+=[linea[17:-1]]
-                cont+=1
-            elif(cont==4):
-                self.Luchas+=[linea[7:-1]]
-                cont+=1
-            elif(cont==5):
-                self.BandoGanador+=[linea[14:-1]]
-                cont+=1
-            else:
-                cont=0
-                        
+                     
 
     def agregarPersonajes(self):
         return 
@@ -231,8 +207,7 @@ class GranTorino(Archivos):
                     if(contraseña+"\n")==datos[indice+2]:
                         ventana.destroy()
                         
-                        A=MenuPrincipal()
-                        A.menuInicial()
+                        M.menuInicial()
                     else:
                         messagebox.showerror("error","Contraseña incorrecta")
                 else:
@@ -249,6 +224,21 @@ class GranTorino(Archivos):
 #-----------------------------------------------------------------------------------------------
 
         
+    
+#-------------------------------------------------------------------------------
+
+
+#----------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#------------------------------------------------------------------------------------------
+#Ventana del menu principal/Inicial
+
+class MenuPrincipal:
+    
+    def __init__(self):
+        self.LuElegidos=[]
+
     def menuPersonaje(self):
         vtnPersonaje=Tk()
         vtnPersonaje.geometry("400x450")
@@ -427,12 +417,12 @@ class GranTorino(Archivos):
                 #suma+=int(entry13.get())
                 suma+=int(entry14.get())
                 suma+=int(entry15.get())
-                print(suma)
+                #print(suma)
                 if(suma==100):
                     archivo=open("Luchadores.txt","a")
                     
                     #tipo,sexo,nombre,alterEgo)
-                    print(nombre)
+                 #   print(nombre)
                     archivo.write("Tipo:"+tipo+"\n")
                     archivo.write("Sexo:"+sexo+"\n")
                     archivo.write("Nombre Completo:"+nombre+"\n")
@@ -450,9 +440,8 @@ class GranTorino(Archivos):
                     archivo.write("--------------------------------------------------"+"\n")
                     archivo.close()
                     vtnPersonaje2.destroy()
-
-                    A=MenuPrincipal()
-                    A.menuInicial()
+                    
+                    M.menuInicial()
 
                     
                 else:
@@ -463,64 +452,50 @@ class GranTorino(Archivos):
             boton.place(x=350,y=550)
 
 
-#-------------------------------------------------------------------------------
+    def eliminarPersonaje(self):
+        vtnEliminarP=Tk()
+        vtnEliminarP.geometry("400x400")
+        vtnEliminarP.title("Eliminar Personaje")
+        vtnEliminarP.config(bg="SteelBlue3", cursor="hand2")
 
-def eliminarPersonaje():
-    vtnEliminarP=Tk()
-    vtnEliminarP.geometry("400x400")
-    vtnEliminarP.title("Eliminar Personaje")
-    vtnEliminarP.config(bg="SteelBlue3", cursor="hand2")
+        tkinter.Label(vtnEliminarP, text="۝   ELIMINAR PERSONAJE   ۝",
+                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                      fg="Black").pack(fill=tkinter.X)
+        etiqueta=tkinter.Label(vtnEliminarP,
+                                text="¿Deseas eliminar un personaje?\n Por favor llenar los campos requeridos\nPara eliminar el personaje",
+                                font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=45,y=32)
+        tkinter.Label(vtnEliminarP, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                      font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
 
-    tkinter.Label(vtnEliminarP, text="۝   ELIMINAR PERSONAJE   ۝",
-                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
-                  fg="Black").pack(fill=tkinter.X)
-    etiqueta=tkinter.Label(vtnEliminarP,
-                            text="¿Deseas eliminar un personaje?\n Por favor llenar los campos requeridos\nPara eliminar el personaje",
-                            font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=45,y=32)
-    tkinter.Label(vtnEliminarP, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
-                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
-
-    etiqueta=tkinter.Label(vtnEliminarP,text="Escriba el arte ego del personaje que desea Eliminar:",
+        etiqueta=tkinter.Label(vtnEliminarP,text="Escriba el arte ego del personaje que desea Eliminar:",
+                                   font=("Times New Roman",14),
+                                   bg="SteelBlue3", fg="Black").place(x=5,y=200)
+        eliminarP=tkinter.Entry(vtnEliminarP,text="",
                                font=("Times New Roman",14),
-                               bg="SteelBlue3", fg="Black").place(x=5,y=200)
-    eliminarP=tkinter.Entry(vtnEliminarP,text="",
-                           font=("Times New Roman",14),
-                           bg="SteelBlue1", fg="Red")
-    eliminarP.place(x=110,y=230)
-    def Eliminar():
-        if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n"))==False:
-           indice=a.BuscarIndiceLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n")
-           #A=Archivos()
-           eliminado=a.EliminarLuchador("Nombre de su alter ego:"+eliminarP.get()+"\n",indice)
-           Archivo=open("Luchadores.txt","w")
-           Archivo.write(eliminado)
-           Archivo.close()
-           messagebox.showinfo("Eliminado","Luchador eliminado")
-           vtnEliminarP.destroy()
-           A=MenuPrincipal()
-           A.menuInicial()
-           
+                               bg="SteelBlue1", fg="Red")
+        eliminarP.place(x=110,y=230)
+        def Eliminar():
+            if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n"))==False:
+               indice=a.BuscarIndiceLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n")
+               #A=Archivos()
+               eliminado=a.EliminarLuchador("Nombre de su alter ego:"+eliminarP.get()+"\n",indice)
+               Archivo=open("Luchadores.txt","w")
+               Archivo.write(eliminado)
+               Archivo.close()
+               messagebox.showinfo("Eliminado","Luchador eliminado")
+               vtnEliminarP.destroy()
+               M.menuInicial()
+               
 
-           
-           
-    
-    botonE=tkinter.Button(vtnEliminarP,text="Eliminar Personaje",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="red",command=Eliminar)#,command=eliminarPersonajetxt())
-    botonE.place(x=120,y=275)
+               
+               
+        
+        botonE=tkinter.Button(vtnEliminarP,text="Eliminar Personaje",font=("Times New Roman",14),
+                                     bg="DeepSkyBlue4", fg="red",command=Eliminar)#,command=eliminarPersonajetxt())
+        botonE.place(x=120,y=275)
 
 
 
-#----------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------
-#Ventana del menu principal/Inicial
-
-class MenuPrincipal:
-    
-    
-    def __init__(self):
-        self.Vpersonajes=DefiniciónDeLosPersonajes()
     
     def menuInicial(self):
         ventanaIni=Tk()
@@ -538,8 +513,8 @@ class MenuPrincipal:
                       font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
         def Crear():
     
-            a=GranTorino()
-            a.menuPersonaje()
+            
+            M.menuPersonaje()
             ventanaIni.destroy()
             
                        
@@ -548,8 +523,8 @@ class MenuPrincipal:
         btn1.place(x=50,y=150)
         #
         def Torneo():
-            a=MenuPrincipal()
-            a.ventanaTorneo()
+
+            M.ventanaTorneo()
             ventanaIni.destroy()
             
         
@@ -561,8 +536,10 @@ class MenuPrincipal:
                                  bg="DeepSkyBlue4", fg="Black")
         btn3.place(x=130,y=235)
         #
+        def jugarTorneo5():
+            M.jugarTorneo()
         btnJugarT=tkinter.Button(ventanaIni,text=" JUGAR TORNEO  ",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="Black", command=jugarTorneo).place(x=125,y=320)
+                                 bg="DeepSkyBlue4", fg="Black", command=jugarTorneo5).place(x=125,y=320)
         #
         btnSalir=tkinter.Button(ventanaIni,text="   SALIR  \n    DEL JUEGO  ",font=("Times New Roman",14),
                                  bg="DeepSkyBlue4", fg="Black",command=ventanaIni.destroy).place(x=135,y=380)
@@ -620,22 +597,36 @@ class MenuPrincipal:
                                bg="SteelBlue3", fg="Black").place(x=5,y=290)
             
         def manual():
-            ventanaTorneo.destroy()
-            A=MenuPrincipal()
-            A.vManual()
+            
+            if(comboNumLuchas.get()!="")and comboLugar.get()!="" and entry17.get()!="" and entry16.get()!="":
+                numero=comboNumLuchas.get()
+                if(numero=="1") or numero=="2" or numero=="3" or numero=="4" or numero=="5":
+                    
+                    M.vManual(entry16.get(),entry17.get(),comboLugar.get(),numero)
+                    ventanaTorneo.destroy()
+                else:
+                    messagebox.showerror("Error","El numero de lucha debe ser entre 1 y 5")
+
+            else:
+                messagebox.showerror("Error","Debe llenar los espacios solicitados")
             
             
-        
+        def manual5():
+            M.manual()
         boton=tkinter.Button(ventanaTorneo,text="MANUAL",font=("Times New Roman",14),
-                             bg="DeepSkyBlue4", fg="Black",command=manual)
+                             bg="DeepSkyBlue4", fg="Black",command=manual5)
         boton.place(x=10,y=320)
         #
+        def JugvsIA7():
+            M.JugvsIA()
         boton=tkinter.Button(ventanaTorneo,text="PERSONA VS PROGRAMA",font=("Times New Roman",14),
-                             bg="DeepSkyBlue4", fg="Black", command=JugvsIA)
+                             bg="DeepSkyBlue4", fg="Black", command=JugvsIA7)
         boton.place(x=10,y=355)
         #
+        def IA_aux():
+            M.IA()
         boton=tkinter.Button(ventanaTorneo,text="PROGRAMA VS PROGRAMA",font=("Times New Roman",14),
-                             bg="DeepSkyBlue4", fg="Black", command= IA)
+                             bg="DeepSkyBlue4", fg="Black", command= IA_aux)
         boton.place(x=10,y=390)
         #
         tkinter.Label(ventanaTorneo, text="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" ,
@@ -676,7 +667,7 @@ class MenuPrincipal:
 
 #--------------------------------------------------------------------------------
         #########menu manual de crear Torneo#####
-    def vManual(self):
+    def vManual(self,nombre,fecha,lugar,numero):
         vtnPersonaje=Tk()
         vtnPersonaje.geometry("400x450")
         vtnPersonaje.title("Menú Torneo")
@@ -706,150 +697,209 @@ class MenuPrincipal:
         for linea in datos.AlterEgo:
             #print(datos.AlterEgo)
             luchadores+=[linea]
+        else:
+            numero=int(numero)
+            if(numero>=1):
+                comboHV=ttk.Combobox(vtnPersonaje, values=luchadores)
+                comboHV.place(x=135,y=160)
+                print(1)
+                if(numero>=2):
+                    comboHV2=ttk.Combobox(vtnPersonaje, values=luchadores)
+                    comboHV2.place(x=135,y=190)
+                    print(2)
+                    if(numero>=3):
+                        
+                        comboHV3=ttk.Combobox(vtnPersonaje, values=luchadores)
+                        comboHV3.place(x=135,y=220)
+                        print(3)
+                        if(numero>=4):
+                                
+                            comboHV4=ttk.Combobox(vtnPersonaje, values=luchadores)
+                            comboHV4.place(x=135,y=250)
+                            print(4)
+                            if(numero==5):
+
+                                comboHV5=ttk.Combobox(vtnPersonaje, values=luchadores)
+                                comboHV5.place(x=135,y=280)
+                                print(5)
+
+        def validar3():
+            if(numero>=1):
+                if(numero>=2):
+                    if(numero>=3):
+                        if(numero>=4):
+                            if(numero==5):
+                                D=DefiniciónDelTorneo()
+                                D.NombreDelTorneo+=[nombre]
+                                D.Fecha+=[fecha]
+                                D.LugarDelTorneo+=[lugar]
+                                D.NúmeroDeLuchas+=[numero]
+                                
+                                M.vManual2(numero,[comboHV.get(),comboHV2.get(),comboHV3.get(),comboHV4.get(),comboHV5.get()])
+                                vtnPersonaje.destroy()
+
+
+                            #else:
+                        #else:
+                    #else:
+                #else:
+            #else:
+                
             
-        comboHV=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV.place(x=135,y=160)
-
-        comboHV2=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV2.place(x=135,y=190)
-
-        comboHV3=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV3.place(x=135,y=220)
-
-        comboHV4=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV4.place(x=135,y=250)
-
-        comboHV5=ttk.Combobox(vtnPersonaje, values=luchadores)
-        comboHV5.place(x=135,y=280)
-
+        
         boton=tkinter.Button(vtnPersonaje,text="Continuar",font=("Times New Roman",14),
-                     bg="DeepSkyBlue4", fg="Black",command=vManual2)
+                     bg="DeepSkyBlue4", fg="Black",command=validar3)
         boton.place(x=160,y=310)
 
-def vManual2():
-    vtnPersonaje2=Tk()
-    vtnPersonaje2.geometry("400x450")
-    vtnPersonaje2.title("Menú Torneo")
-    vtnPersonaje2.config(bg="SteelBlue3", cursor="hand2")
+    def vManual2(self,numero,almacenar):
+        vtnPersonaje2=Tk()
+        vtnPersonaje2.geometry("400x450")
+        vtnPersonaje2.title("Menú Torneo")
+        vtnPersonaje2.config(bg="SteelBlue3", cursor="hand2")
     
-    tkinter.Label(vtnPersonaje2, text="۝   ELECION DE PERSONAJE   ۝",
-                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
-                  fg="Black").pack(fill=tkinter.X)
-    etiqueta=tkinter.Label(vtnPersonaje2,
-                           text="Elija a los contrincantes\ncon los que desea Luchar",
-                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=32)
-
-    tkinter.Label(vtnPersonaje2, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
-                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
-
-
-    etiqueta=tkinter.Label(vtnPersonaje2,
-                           text="Seleccionar Enemigos:",
-                           font=("Times New Roman",14),
-                           bg="SteelBlue3", fg="Black").place(x=120,y=130)
-
-
-    datos=DefiniciónDeLosPersonajes()
-    luchadores=[]
-        
-    for linea in datos.AlterEgo:
-        #print(datos.AlterEgo)
-        luchadores+=[linea]
-            
-    comboHV6=ttk.Combobox(vtnPersonaje2, values=luchadores)
-    comboHV6.place(x=135,y=160)
-
-    comboHV7=ttk.Combobox(vtnPersonaje2, values=luchadores)
-    comboHV7.place(x=135,y=190)
-
-    comboHV8=ttk.Combobox(vtnPersonaje2, values=luchadores)
-    comboHV8.place(x=135,y=220)
-
-    comboHV9=ttk.Combobox(vtnPersonaje2, values=luchadores)
-    comboHV9.place(x=135,y=250)
-
-    comboHV10=ttk.Combobox(vtnPersonaje2, values=luchadores)
-    comboHV10.place(x=135,y=280)
-
-    boton=tkinter.Button(vtnPersonaje2,text="LUCHAR",font=("Times New Roman",14),
-                         bg="DeepSkyBlue4", fg="Black")
-    boton.place(x=160,y=310)
-#-----------------------------------------------------------------------------------
-def JugvsIA():
-    vtnPerIA=Tk()
-    vtnPerIA.geometry("400x450")
-    vtnPerIA.title("Menú Torneo")
-    vtnPerIA.config(bg="SteelBlue3", cursor="hand2")
-    
-    tkinter.Label(vtnPerIA, text="۝   ELECION DE PERSONAJE   ۝",
-                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
-                  fg="Black").pack(fill=tkinter.X)
-    etiqueta=tkinter.Label(vtnPerIA,
-                           text="Elija a los Personajes\ncon los que desea Luchar",
-                           font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=32)
-
-    tkinter.Label(vtnPerIA, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
-                  font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
-
-
-
-    etiqueta=tkinter.Label(vtnPerIA,
-                           text="Seleccionar Luchadores:",
-                           font=("Times New Roman",14),
-                           bg="SteelBlue3", fg="Black").place(x=120,y=130)
-
-
-    datos=DefiniciónDeLosPersonajes()
-    luchadores=[]
-        
-    for linea in datos.AlterEgo:
-        #print(datos.AlterEgo)
-        luchadores+=[linea]
-            
-    comboHV11=ttk.Combobox(vtnPerIA, values=luchadores)
-    comboHV11.place(x=135,y=160)
-
-    comboHV12=ttk.Combobox(vtnPerIA, values=luchadores)
-    comboHV12.place(x=135,y=190)
-
-    comboHV13=ttk.Combobox(vtnPerIA, values=luchadores)
-    comboHV13.place(x=135,y=220)
-
-    comboHV14=ttk.Combobox(vtnPerIA, values=luchadores)
-    comboHV14.place(x=135,y=250)
-
-    comboHV15=ttk.Combobox(vtnPerIA, values=luchadores)
-    comboHV15.place(x=135,y=280)
-
-    boton=tkinter.Button(vtnPerIA,text="Continuar",font=("Times New Roman",14),
-                         bg="DeepSkyBlue4", fg="Black")
-    boton.place(x=160,y=310)
-
-
-
-def IA():
-    vtnIA=Tk()
-    vtnIA.geometry("400x450")
-    vtnIA.title("Menú Torneo")
-    vtnIA.config(bg="SteelBlue3", cursor="hand2")
-    
-    tkinter.Label(vtnIA, text="۝   IA   ۝",
-                  font=("Times New Roman", 18),bg="RoyalBlue2" ,
-                  fg="Black").pack(fill=tkinter.X)
-    
-           
-            
-
-#-------------------------------------
-def jugarTorneo():
-    vtnJuegoT=Tk()
-    vtnJuegoT.geometry("400x400")
-    vtnJuegoT.title("Jugar Torneo")
-    vtnJuegoT.config(bg="SteelBlue3", cursor="hand2")
-
-    tkinter.Label(vtnJuegoT, text="۝   JUEGO TORNEO   ۝",
+        tkinter.Label(vtnPersonaje2, text="۝   ELECION DE PERSONAJE   ۝",
                       font=("Times New Roman", 18),bg="RoyalBlue2" ,
                       fg="Black").pack(fill=tkinter.X)
+        etiqueta=tkinter.Label(vtnPersonaje2,
+                               text="Elija a los contrincantes\ncon los que desea Luchar",
+                               font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=32)
+
+        tkinter.Label(vtnPersonaje2, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                      font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
+
+
+        etiqueta=tkinter.Label(vtnPersonaje2,
+                               text="Seleccionar Enemigos:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=120,y=130)
+
+
+        datos=DefiniciónDeLosPersonajes()
+        luchadores=[]  
+        for linea in datos.AlterEgo:
+            #print(datos.AlterEgo)
+            luchadores+=[linea]
+        else:
+            comboHV6=ttk.Combobox(vtnPersonaje2, values=luchadores)
+            comboHV6.place(x=135,y=160)
+            print(0)
+            if(numero>=2):
+                comboHV7=ttk.Combobox(vtnPersonaje2, values=luchadores)
+                comboHV7.place(x=135,y=190)
+                print(7)
+                if(numero>=3):
+                    comboHV8=ttk.Combobox(vtnPersonaje2, values=luchadores)
+                    comboHV8.place(x=135,y=220)
+                    print(8)
+                    if(numero>=4):
+                        comboHV9=ttk.Combobox(vtnPersonaje2, values=luchadores)
+                        comboHV9.place(x=135,y=250)
+                        print(9)
+                        if(numero==5):
+                            comboHV10=ttk.Combobox(vtnPersonaje2, values=luchadores)
+                            comboHV10.place(x=135,y=280)
+                            print(10)
+                            
+                            
+        def CREART():
+            if(numero>=1):
+                if(numero>=2):
+                    if(numero>=3):
+                        if(numero>=4):
+                            if(numero==5):
+                                almacenar2=[]
+                                almacenar2+=[comboHV6.get()]
+                                almacenar2+=[comboHV7.get()]
+                                almacenar2+=[comboHV8.get()]
+                                almacenar2+=[comboHV9.get()]
+                                almacenar2+=[comboHV10.get()]
+                                a=DefiniciónDelTorneo()
+                                a.Luchas+=[almacenar+almacenar2]
+                                self.LuElegidos=[]
+                                print(a.Luchas)
+                                vtnPersonaje2.destroy()
+                                M.menuInicial()
+                                
+            
+        boton=tkinter.Button(vtnPersonaje2,text="LUCHAR",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black",command=CREART)
+        boton.place(x=160,y=310)
+#-----------------------------------------------------------------------------------
+    def JugvsIA(self):
+        vtnPerIA=Tk()
+        vtnPerIA.geometry("400x450")
+        vtnPerIA.title("Menú Torneo")
+        vtnPerIA.config(bg="SteelBlue3", cursor="hand2")
+        
+        tkinter.Label(vtnPerIA, text="۝   ELECION DE PERSONAJE   ۝",
+                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                      fg="Black").pack(fill=tkinter.X)
+        etiqueta=tkinter.Label(vtnPerIA,
+                               text="Elija a los Personajes\ncon los que desea Luchar",
+                               font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=110,y=32)
+
+        tkinter.Label(vtnPerIA, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                      font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
+
+
+
+        etiqueta=tkinter.Label(vtnPerIA,
+                               text="Seleccionar Luchadores:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=120,y=130)
+
+
+        datos=DefiniciónDeLosPersonajes()
+        luchadores=[]
+            
+        for linea in datos.AlterEgo:
+            #print(datos.AlterEgo)
+            luchadores+=[linea]
+                
+        comboHV11=ttk.Combobox(vtnPerIA, values=luchadores)
+        comboHV11.place(x=135,y=160)
+
+        comboHV12=ttk.Combobox(vtnPerIA, values=luchadores)
+        comboHV12.place(x=135,y=190)
+
+        comboHV13=ttk.Combobox(vtnPerIA, values=luchadores)
+        comboHV13.place(x=135,y=220)
+
+        comboHV14=ttk.Combobox(vtnPerIA, values=luchadores)
+        comboHV14.place(x=135,y=250)
+
+        comboHV15=ttk.Combobox(vtnPerIA, values=luchadores)
+        comboHV15.place(x=135,y=280)
+
+        boton=tkinter.Button(vtnPerIA,text="Continuar",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black")
+        boton.place(x=160,y=310)
+
+
+
+    def IA(self):
+        vtnIA=Tk()
+        vtnIA.geometry("400x450")
+        vtnIA.title("Menú Torneo")
+        vtnIA.config(bg="SteelBlue3", cursor="hand2")
+        
+        tkinter.Label(vtnIA, text="۝   IA   ۝",
+                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                      fg="Black").pack(fill=tkinter.X)
+        
+               
+                
+
+    #-------------------------------------
+    def jugarTorneo(self):
+        vtnJuegoT=Tk()
+        vtnJuegoT.geometry("400x400")
+        vtnJuegoT.title("Jugar Torneo")
+        vtnJuegoT.config(bg="SteelBlue3", cursor="hand2")
+
+        tkinter.Label(vtnJuegoT, text="۝   JUEGO TORNEO   ۝",
+                          font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                          fg="Black").pack(fill=tkinter.X)
 
 
 #----------------------------------------------------------------------------------------
@@ -859,7 +909,8 @@ def jugarTorneo():
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------
-###############
-a=GranTorino()#
-a.menu()      #
-###############
+##################
+A=GranTorino()   #
+A.menu()         #
+M=MenuPrincipal()#
+##################
