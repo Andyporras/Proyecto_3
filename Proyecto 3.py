@@ -1233,10 +1233,10 @@ class MenuPrincipal:
         comboHV11=ttk.Combobox(vtnJuegoT, values=luchadores)
         comboHV11.place(x=135,y=160)
         def Jugar3():
-            if(comboHV11!=""):
+            if(comboHV11.get()!=""):
                 print(self.Torneos)
                 print(1)
-                M.ResultLuchas(comboHV11)
+                M.ResultLuchas(comboHV11.get())
                 M.menuInicial()
                 vtnJuegoT.destroy()
             else:
@@ -1262,8 +1262,8 @@ class MenuPrincipal:
                         cont2=0
                         Victorias=[]
                         
-                        while con2!=3:
-                            Victorias+=random.sample(Luchadores,1)
+                        while cont2!=3:
+                            Victorias+=random.sample(luchadores,1)
                             cont2+=1
                                 
 
@@ -1271,26 +1271,26 @@ class MenuPrincipal:
                            per1=0
                            per2=0
                            for vic in Victorias:
-                                if(vic==Luchadores[0]):
+                                if(vic==luchadores[0]):
                                     per1+=1
                                 else:
                                     per2+=1
                            else:
                                 if(per1>per2):
-                                    print(luchadores[0]+"\n",luchadores[1]+"\n",per1+"n",luchadores[0]+"\n",torneo+"\n")
+                                   # print(luchadores[0]+"\n",luchadores[1]+"\n",per1+"n",luchadores[0]+"\n",torneo+"\n")
                                     Archivo=open("Luchas.txt","a")
-                                    Archivo.white(luchadores[0]+"\n")
+                                    Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(luchadores[1]+"\n")
-                                    Archivo.write(per1+"n")
+                                    Archivo.write(str(per1)+"n")
                                     Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
                                     Archivo.close()
                                 else:
                                     Archivo=open("Luchas.txt","a")
-                                    Archivo.white(luchadores[0]+"\n")
+                                    Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(luchadores[1]+"\n")
-                                    Archivo.write(per2+"n")
+                                    Archivo.write(str(per2)+"n")
                                     Archivo.write(luchadores[-1]+"\n")
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
