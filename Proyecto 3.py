@@ -6,18 +6,53 @@ from tkinter import ttk
 from random import choice
 import random
 
+"""
+Nombre:
+Entrada:
+Salida:
+Restriccion:
+Objetivo:
+"""
 class Archivos:
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def __init__(self):
         self.Acceso=open("acceso.txt")
         self.Luchadores=open("Luchadores.txt")
         self.DatoLuchadores=self.Luchadores.readlines()
         self.Torneos=open("Torneos.txt")
         self.DatoTorneos=self.Torneos.readlines()
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def datosAcceso(self):
         return self.Acceso.readlines()
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def BuscarIndiceLuchadores(self,buscar):
         datos=self.DatoLuchadores
         return datos.index(buscar)
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def BuscarDatosLuchadores(self,buscar):
         for linea in self.DatoLuchadores:
             if(linea == buscar):
@@ -25,6 +60,13 @@ class Archivos:
             else:
                 continue
         return True
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def EliminarLuchador(self,eliminar,indice):
         datos=a.DatoLuchadores
         cont=0
@@ -37,8 +79,14 @@ class Archivos:
                 return Convertir_A_String(datos)
             else:
                 indice+=15
-        
-                    
+#---------------------------------------------------------------------------------------------------        
+"""
+Nombre:
+Entrada:
+Salida:
+Restriccion:
+Objetivo:
+"""             
 def Convertir_A_String(lista):
     if isinstance(lista, list):#El parámetro de entrada debe de ser una lista(restricción).
         string = ""
@@ -48,8 +96,15 @@ def Convertir_A_String(lista):
     else:#Se imprime el error en el caso de que el parámetro de entrada no cumple con las restriciones predeterminadas.
         #print("Error: No se puede convertir a string, debido a que el tipo de dato de entrada no es una lista.")
         None
-               
-#PUNTO C
+
+"""
+Nombre:
+Entrada:
+Salida:
+Restriccion:
+Objetivo:
+"""            
+#PUNTO C#-----------------------------------------------------------------------------
 class DefiniciónDeLosPersonajes:
     def __init__(self):
         
@@ -119,13 +174,26 @@ class DefiniciónDeLosPersonajes:
             else:
                 cont=0
                 
-                
-                
-        
+#---------------------------------------------------------------------------------------------------
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """          
     def verAlterEgo(self):
         return self.AlterEgo
 
-#PUNTO D
+#---------------------------------------------------------------------------------------------------
+"""
+Nombre:
+Entrada:
+Salida:
+Restriccion:
+Objetivo:
+"""
+#PUNTO D#----------------------------------------------------------------------------------------
 class DefiniciónDelTorneo:#Punto d
     def __init__(self,nombre,fecha,lugar,numero,luchas):
         self.NombreDelTorneo=nombre
@@ -134,7 +202,14 @@ class DefiniciónDelTorneo:#Punto d
         self.NumeroDeLuchas=numero
         self.Luchas=luchas
         self.BandoGanador=[]
-        
+#---------------------------------------------------------------------------------------------------
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def Mostrar(self):
         print(self.NombreDelTorneo)
         print(self.Fecha)
@@ -143,19 +218,27 @@ class DefiniciónDelTorneo:#Punto d
         print(self.Luchas)
         
 
-        
-                     
-
+#---------------------------------------------------------------------------------------------------              
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def agregarPersonajes(self):
         return 
 
 
-        
-
-
-
-
-#PUNTO E
+#---------------------------------------------------------------------------------------------------
+"""
+Nombre:
+Entrada:
+Salida:
+Restriccion:
+Objetivo:
+"""
+#PUNTO E#-------------------------------------------------------------------------------------------
 class DefiniciónDeLasLuchas: #Punto e
     def __init__(self,luchador1,luchador2,Round1,Round2,Round3,ganador):
         
@@ -166,10 +249,22 @@ class DefiniciónDeLasLuchas: #Punto e
         self.Ganador3erRound=Round3
         self.GanadorDeLaLucha=ganador
 
-        
-        
+#---------------------------------------------------------------------------------------------------    
+"""
+Nombre:
+Entrada:
+Salida:
+Restriccion:
+Objetivo:
+"""      
 class GranTorino(Archivos):
-
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def menu(self):
         ventana=Tk()
         ventana.geometry("400x400")
@@ -206,6 +301,13 @@ class GranTorino(Archivos):
         etiqueta=tkinter.Label(ventana,text="Ingrese su Contraseña:",
                                font=("Times New Roman",14),
                                bg="SteelBlue3", fg="Black").place(x=111,y=250)
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def controlDeAcceso():
             nombre=entry1.get()
             usuario=entry2.get()
@@ -233,27 +335,42 @@ class GranTorino(Archivos):
                              bg="DeepSkyBlue4", fg="Black",command=controlDeAcceso)
         boton.place(x=160,y=320)
 #-----------------------------------------------------------------------------------------------
-
-        
-    
-#-------------------------------------------------------------------------------
-
-
-#----------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------
 #Ventana del menu principal/Inicial
-
+"""
+Nombre:
+Entrada:
+Salida:
+Restriccion:
+Objetivo:
+"""
 class MenuPrincipal:
-    
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def __init__(self):
         self.Torneos=[]
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def mostrarTorneos(self):
         for dato in self.Torneos:
             dato.Mostrar()
-        
-
+#---------------------------------------------------------------------------------------------------
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def menuPersonaje(self):
         vtnPersonaje=Tk()
         vtnPersonaje.geometry("400x450")
@@ -297,6 +414,14 @@ class MenuPrincipal:
         #
         boton=tkinter.Button(vtnPersonaje,text="Eliminar Personaje Existente",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black",command= eliminarPersonaje).place(x=10,y=400)
+
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def validarPersonaje():
             a=Archivos()
             
@@ -312,7 +437,14 @@ class MenuPrincipal:
         boton=tkinter.Button(vtnPersonaje,text="Continuar\nCreacion",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black", command=validarPersonaje)
         boton.place(x=160,y=320)
-    #################################
+#---------------------------------------------------------------------------------------------------
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def menuPersonaje2(tipo,sexo,nombre,alterEgo):
             vtnPersonaje.destroy()
             vtnPersonaje2=Tk()
@@ -413,7 +545,14 @@ class MenuPrincipal:
                                     font=("Times New Roman",12),
                                     bg="SteelBlue1", fg="Black")
             entry15.place(x=200,y=450)
-
+            
+            """
+            Nombre:
+            Entrada:
+            Salida:
+            Restriccion:
+            Objetivo:
+            """
             def validarPoderes():
                 suma=0
                 suma+=int(entry5.get())
@@ -454,7 +593,14 @@ class MenuPrincipal:
                                  bg="DeepSkyBlue4", fg="Black",command=validarPoderes)
             boton.place(x=350,y=550)
 
-
+#---------------------------------------------------------------------------------------------------
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def eliminarPersonaje(self):
         vtnEliminarP=Tk()
         vtnEliminarP.geometry("400x400")
@@ -477,6 +623,13 @@ class MenuPrincipal:
                                font=("Times New Roman",14),
                                bg="SteelBlue1", fg="Red")
         eliminarP.place(x=110,y=230)
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def Eliminar():
             if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n"))==False:
                indice=a.BuscarIndiceLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n")
@@ -489,16 +642,18 @@ class MenuPrincipal:
                M.menuInicial()
                
 
-               
-               
-        
         botonE=tkinter.Button(vtnEliminarP,text="Eliminar Personaje",font=("Times New Roman",14),
                                      bg="DeepSkyBlue4", fg="red",command=Eliminar)#,command=eliminarPersonajetxt())
         botonE.place(x=120,y=275)
+#---------------------------------------------------------------------------------------------------
 
-
-
-    
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def menuInicial(self):
         ventanaIni=Tk()
         ventanaIni.geometry("400x450")
@@ -513,6 +668,15 @@ class MenuPrincipal:
                                font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=55,y=32)
         tkinter.Label(ventanaIni, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
                       font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
+
+#---------------------------------------------------------------------------------------------------
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def Crear():
     
             
@@ -524,6 +688,13 @@ class MenuPrincipal:
                                  bg="DeepSkyBlue4", fg="Black",command=Crear)
         btn1.place(x=50,y=150)
         #
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def Torneo():
 
             M.ventanaTorneo()
@@ -538,6 +709,13 @@ class MenuPrincipal:
                                  bg="DeepSkyBlue4", fg="Black")
         btn3.place(x=130,y=235)
         #
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def jugarTorneo5():
             M.jugarTorneo()
         btnJugarT=tkinter.Button(ventanaIni,text=" JUGAR TORNEO  ",font=("Times New Roman",14),
@@ -553,7 +731,14 @@ class MenuPrincipal:
                       font=("Times New Roman", 18),bg="SteelBlue3" ,
                       fg="Black").place(x=370,y=420)
 
-
+#---------------------------------------------------------------------------------------------------
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def ventanaTorneo(self):
         ventanaTorneo=Tk()
         ventanaTorneo.geometry("450x530")
@@ -597,7 +782,14 @@ class MenuPrincipal:
         etiqueta=tkinter.Label(ventanaTorneo,text="Selecciona el modo de Lucha:",
                                font=("Times New Roman",14),
                                bg="SteelBlue3", fg="Black").place(x=5,y=290)
-            
+#---------------------------------------------------------------------------------------------------
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def manual():
             
             if(comboNumLuchas.get()!="")and comboLugar.get()!="" and entry17.get()!="" and entry16.get()!="":
@@ -617,6 +809,13 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black",command=manual)
         boton.place(x=10,y=320)
         #
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def JugvsIA7():
             if(comboNumLuchas.get()!="")and comboLugar.get()!="" and entry17.get()!="" and entry16.get()!="":
                 numero=comboNumLuchas.get()
@@ -634,6 +833,13 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black", command=JugvsIA7)
         boton.place(x=10,y=355)
         #
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def IA_aux():
             if(comboNumLuchas.get()!="")and comboLugar.get()!="" and entry17.get()!="" and entry16.get()!="":
                 numero=comboNumLuchas.get()
@@ -653,8 +859,15 @@ class MenuPrincipal:
         #
         tkinter.Label(ventanaTorneo, text="_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _" ,
                       font=("Arial Black",10),bg="SteelBlue3",fg="Black").place(x=10,y=440)
-        #
-
+        
+#---------------------------------------------------------------------------------------------------
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def eliminarTorneo():
             ventanaTorneo.destroy()
             vtnEliminarT=Tk()
@@ -689,6 +902,13 @@ class MenuPrincipal:
 
 #--------------------------------------------------------------------------------
         #########menu manual de crear Torneo#####
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def vManual(self,nombre,fecha,lugar,numero):
         vtnPersonaje=Tk()
         vtnPersonaje.geometry("500x550")
@@ -762,6 +982,13 @@ class MenuPrincipal:
                                 comboHVE5.place(x=300,y=280)
                                 print(5)
 
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def validar3():
             if(numero>=1):
                 if(numero>=2):
@@ -805,6 +1032,13 @@ class MenuPrincipal:
         boton.place(x=160,y=310)
     
 #-----------------------------------------------------------------------------------
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def JugvsIA(self,nombre,fecha,lugar,numero):
         vtnPerIA=Tk()
         vtnPerIA.geometry("400x450")
@@ -822,12 +1056,10 @@ class MenuPrincipal:
                       font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
 
 
-
         etiqueta=tkinter.Label(vtnPerIA,
                                text="Seleccionar Luchadores:",
                                font=("Times New Roman",14),
                                bg="SteelBlue3", fg="Black").place(x=120,y=130)
-
 
         datos=DefiniciónDeLosPersonajes()
         luchadores=[]
@@ -857,6 +1089,14 @@ class MenuPrincipal:
 
                                 comboHV15=ttk.Combobox(vtnPerIA, values=luchadores)
                                 comboHV15.place(x=135,y=280)
+#---------------------------------------------------------------------------------------------------                    
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def CrearT():
             P=DefiniciónDeLosPersonajes()
             Per=P.AlterEgo
@@ -896,8 +1136,14 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black",command=CrearT)
         boton.place(x=160,y=310)
 
-
-
+#---------------------------------------------------------------------------------------------------                    
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def IA(self,nombre,fecha,lugar,numero):
         vtnIA=Tk()
         vtnIA.geometry("400x450")
@@ -907,7 +1153,14 @@ class MenuPrincipal:
         tkinter.Label(vtnIA, text="۝   IA   ۝",
                       font=("Times New Roman", 18),bg="RoyalBlue2" ,
                       fg="Black").pack(fill=tkinter.X)
-        
+#---------------------------------------------------------------------------------------------------
+        """
+        Nombre:
+        Entrada:
+        Salida:
+        Restriccion:
+        Objetivo:
+        """
         def CrearIA():
             P=DefiniciónDeLosPersonajes()
             Per=P.AlterEgo
@@ -951,8 +1204,14 @@ class MenuPrincipal:
         
                
                 
-
-    #-------------------------------------
+#---------------------------------------------------------------------------------------------------
+    """
+    Nombre:
+    Entrada:
+    Salida:
+    Restriccion:
+    Objetivo:
+    """
     def jugarTorneo(self):
         vtnJuegoT=Tk()
         vtnJuegoT.geometry("400x400")
@@ -964,12 +1223,10 @@ class MenuPrincipal:
                           fg="Black").pack(fill=tkinter.X)
 
 
-#----------------------------------------------------------------------------------------
 
-    
-        
-#------------------------------------------------------------------------------------------
-#------------------------------------------------------------------------------------------
+
+
+
 #------------------------------------------------------------------------------------------
 ##################
 A=GranTorino()   #
