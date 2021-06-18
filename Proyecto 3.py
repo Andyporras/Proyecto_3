@@ -1070,7 +1070,6 @@ class MenuPrincipal:
                 
         else:
             if(numero>=1):
-                
                 comboHV11=ttk.Combobox(vtnPerIA, values=luchadores)
                 comboHV11.place(x=135,y=160)
                 if(numero>=2):
@@ -1221,6 +1220,92 @@ class MenuPrincipal:
         tkinter.Label(vtnJuegoT, text="۝   JUEGO TORNEO   ۝",
                           font=("Times New Roman", 18),bg="RoyalBlue2" ,
                           fg="Black").pack(fill=tkinter.X)
+        etiqueta=tkinter.Label(vtnJuegoT,
+                               text="Seleccione el Torneo:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=120,y=130)
+        
+        
+        luchadores=[]
+        for dato in self.Torneos:
+            luchadores+=[dato.NombreDelTorneo]
+            
+        comboHV11=ttk.Combobox(vtnJuegoT, values=luchadores)
+        comboHV11.place(x=135,y=160)
+        def Jugar3():
+            if(comboHV11!=""):
+                print(self.Torneos)
+                print(1)
+                M.ResultLuchas(comboHV11)
+                M.menuInicial()
+                vtnJuegoT.destroy()
+            else:
+                print("Error")
+                
+        boton=tkinter.Button(vtnJuegoT,text="Jugar",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black",command=Jugar3)
+        boton.place(x=160,y=310)
+
+    def ResultLuchas(self,torneo):
+        
+        for dato in self.Torneos:
+            print(dato.NombreDelTorneo,torneo)
+            if(dato.NombreDelTorneo==torneo):
+                cont=0
+                vando1=[]
+                vando2=[]
+                luchadores=[]
+                for Personaje1 in dato.Luchas:
+                    if(cont==1):
+                        luchadores+=[Personaje1]
+                        cont=0
+                        cont2=0
+                        Victorias=[]
+                        
+                        while con2!=3:
+                            Victorias+=random.sample(Luchadores,1)
+                            cont2+=1
+                                
+
+                        else:
+                           per1=0
+                           per2=0
+                           for vic in Victorias:
+                                if(vic==Luchadores[0]):
+                                    per1+=1
+                                else:
+                                    per2+=1
+                           else:
+                                if(per1>per2):
+                                    print(luchadores[0]+"\n",luchadores[1]+"\n",per1+"n",luchadores[0]+"\n",torneo+"\n")
+                                    Archivo=open("Luchas.txt","a")
+                                    Archivo.white(luchadores[0]+"\n")
+                                    Archivo.write(luchadores[1]+"\n")
+                                    Archivo.write(per1+"n")
+                                    Archivo.write(luchadores[0]+"\n")
+                                    Archivo.write(torneo+"\n")
+                                    Archivo.write("--------------------------\n")
+                                    Archivo.close()
+                                else:
+                                    Archivo=open("Luchas.txt","a")
+                                    Archivo.white(luchadores[0]+"\n")
+                                    Archivo.write(luchadores[1]+"\n")
+                                    Archivo.write(per2+"n")
+                                    Archivo.write(luchadores[-1]+"\n")
+                                    Archivo.write(torneo+"\n")
+                                    Archivo.write("--------------------------\n")
+                                    Archivo.close()
+                                    
+                                    
+                                    
+                                
+
+                    else:
+                        luchadores+=[Personaje1]
+                        cont+=1
+                        
+                        
+        
 
 
 
