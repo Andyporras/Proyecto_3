@@ -3,7 +3,7 @@ import tkinter
 from tkinter import*
 from tkinter import messagebox
 from tkinter import ttk
-from random import choice
+#from random import choice
 import random
 
 """
@@ -1251,9 +1251,12 @@ class MenuPrincipal:
         for dato in self.Torneos:
             print(dato.NombreDelTorneo,torneo)
             if(dato.NombreDelTorneo==torneo):
+                fecha=dato.Fecha
+                lugar=dato.LugarDelTorneo
+                NumLuchas=dato.NumeroDeLuchas
                 cont=0
-                vando1=[]
-                vando2=[]
+                vando1=0
+                vando2=0
                 luchadores=[]
                 for Personaje1 in dato.Luchas:
                     if(cont==1):
@@ -1286,6 +1289,7 @@ class MenuPrincipal:
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
                                     Archivo.close()
+                                    vando1+=1
                                 else:
                                     Archivo=open("Luchas.txt","a")
                                     Archivo.write(luchadores[0]+"\n")
@@ -1295,6 +1299,7 @@ class MenuPrincipal:
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
                                     Archivo.close()
+                                    vando2+=1
                                     
                                     
                                     
@@ -1303,8 +1308,19 @@ class MenuPrincipal:
                     else:
                         luchadores+=[Personaje1]
                         cont+=1
-                        
-                        
+
+         #Nombre Torneo’, ‘Fecha’, ‘Lugar’, Numero de luchas, #VictoriasBando1, #VictoriasBando2               
+        else:
+            ArchivoT=open("Torneos.txt","a")
+            ArchivoT.write(torneo+"\n")
+            ArchivoT.write(fecha+"\n")
+            ArchivoT.write(lugar+"\n")
+            ArchivoT.write(str(NumLuchas)+"\n")
+            ArchivoT.write(str(vando1)+"\n")
+            ArchivoT.write(str(vando2)+"\n")
+            ArchivoT.write("--------------------------\n")
+            ArchivoT.close()
+            
         
 
 
