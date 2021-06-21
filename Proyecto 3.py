@@ -884,16 +884,35 @@ class MenuPrincipal:
             tkinter.Label(vtnEliminarT, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
                           font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
 
-            etiqueta=tkinter.Label(vtnEliminarT,text="Escriba el nombre del torneo que desea Eliminar:",
+            etiqueta=tkinter.Label(vtnEliminarT,text="Seleccione el nombre del torneo que desea Eliminar:",
                                    font=("Times New Roman",14),
                                    bg="SteelBlue3", fg="Black").place(x=5,y=200)
-            eliminarT=tkinter.Entry(vtnEliminarT,text="",
-                                    font=("Times New Roman",14),
-                                    bg="SteelBlue1", fg="Red")
+
+            Torneo=[]
+            for dato in self.Torneos:
+                Torneo+=[dato.NombreDelTorneo]
+                
+            
+            eliminarT=ttk.Combobox(vtnEliminarT, values=Torneo)
             eliminarT.place(x=110,y=230)
 
+            def eliminarTorneo():
+                if(eliminarT.get()!=""):
+                    cont=0
+                    for dato in self.Torneos:
+                        if(dato.NombreDelTorneo==eliminarT.get()):
+                            self.Torneos.pop(cont)
+                        else:
+                            cont+=1
+                    messagebox.showinfo("Eliminado","Torneo eliminado")
+                    vtnEliminarT.destroy()
+                    M.menuInicial()
+                            
+                else:
+                    messagebox.showerror("Error","Selecione unos de los torneos existente")
+
             botonE2=tkinter.Button(vtnEliminarT,text="Eliminar Torneo",font=("Times New Roman",14),
-                                  bg="DeepSkyBlue4", fg="red")#,command=eliminarTorneotxt())
+                                  bg="DeepSkyBlue4", fg="red",command=eliminarTorneo)#,command=eliminarTorneotxt())
             botonE2.place(x=120,y=275)
           #  
         boton=tkinter.Button(ventanaTorneo,text="Eliminar un Torneo",font=("Times New Roman",14),
@@ -1284,7 +1303,7 @@ class MenuPrincipal:
                                     Archivo=open("Luchas.txt","a")
                                     Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(luchadores[1]+"\n")
-                                    Archivo.write(str(per1)+"n")
+                                    Archivo.write(str(per1)+"\n")
                                     Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
@@ -1294,7 +1313,7 @@ class MenuPrincipal:
                                     Archivo=open("Luchas.txt","a")
                                     Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(luchadores[1]+"\n")
-                                    Archivo.write(str(per2)+"n")
+                                    Archivo.write(str(per2)+"\n")
                                     Archivo.write(luchadores[-1]+"\n")
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
