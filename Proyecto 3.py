@@ -3,8 +3,9 @@ import tkinter
 from tkinter import*
 from tkinter import messagebox
 from tkinter import ttk
-from random import choice
+#from random import choice
 import random
+from statistics import mode
 
 """
 Nombre:Archivos
@@ -185,7 +186,7 @@ class DefiniciónDeLosPersonajes:
     """
     Nombre: verAlterEgo
     Entrada: no posee
-    Salida: no posee
+    Salida: los arteEgo de los luchadores.
     Restriccion: no posee
     Objetivo: mostrar los alterEgo´s
     """          
@@ -727,8 +728,13 @@ class MenuPrincipal:
                                  bg="DeepSkyBlue4", fg="Black",command=Torneo)
         btn2.place(x=230,y=150)
         #
+        def estadistica():
+            ventanaIni.destroy()
+            M.EstadisticasDeltorneo()
+            
+            
         btn3=tkinter.Button(ventanaIni,text="   Estadisticas  \n    De Las Luchas  ",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="Black")
+                                 bg="DeepSkyBlue4", fg="Black",command=estadistica)
         btn3.place(x=130,y=235)
         #
         """
@@ -1383,12 +1389,78 @@ class MenuPrincipal:
             ArchivoT.close()
             
         
+    def EstadisticasDeltorneo(self):
+        vtnEsta=Tk()
+        vtnEsta.geometry("400x450")
+        vtnEsta.title("Menú Estadisticas")
+        vtnEsta.config(bg="SteelBlue3", cursor="hand2")
+        
+        tkinter.Label(vtnEsta, text="۝   Estadisticas   ۝",
+                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                      fg="Black").pack(fill=tkinter.X)
+        Lc=DefiniciónDeLosPersonajes()
+        CaTorneo=0
+        CanVillanos=0
+        CanHereos=0
+        HeroeLuPerdidas=0
+        VilLuPerdidas=0
+        HeroeNumTorneo=0
+        VilNumTorneo=0
+        Archivo=open("Torneos.txt")
+        torneos=Archivo.readlines()
+        ArchivoL=open("Luchas.txt")
+        Luchas=ArchivoL.readlines()
+        for linea in torneos:
+            CaTorneo+=1
+        for linea in Lc.Tipo:
+            if(linea=="Héroe"):
+                CanHereos+=1
+            else:
+                CanVillanos+=1
+
+        cont=0
+        Villanos=[]
+        Heroes=[]
+        Total=[]
+        for indice in  Luchas:
+            if(cont==3):
+                if(M.validarVillano(indice)):
+                    Villanos+=[indice]
+                    cont+=1
+                else:
+                    Heroes+=[indice]
+                    cont+=1
+            elif(cont==4):
+                cont+=1
+            elif(cont==5):
+                cont=0
+                    
+            else:
+                Total+=[indice]
+                cont+=1
+        
+        HeroeLuGanadas=0
+        print(mode(Heroes))
+        VilLuGanadas=mode(Villanos)
+        print(CaTorneo,CanHeroes,CanVillanos,Villanos,Heroes,HeroeLuGanadas,
+              VilLuGanadas,Total)
+        
 
 
 
+    def validarVillano(self,info):
+        Lc=DefiniciónDeLosPersonajes()
+        cont=0
+        for dato in Lc.Tipo:
+            if(dato=="Villano"):
+                if(info==Lc.AlterEgo[cont]):
+                    return True
+                else:
+                    cont+=1
 
-
-
+            else:
+                cont+=1
+        return False
 #------------------------------------------------------------------------------------------
 ##################
 A=GranTorino()   #
