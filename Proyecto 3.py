@@ -3,23 +3,23 @@ import tkinter
 from tkinter import*
 from tkinter import messagebox
 from tkinter import ttk
-#from random import choice
+from random import choice
 import random
 
 """
-Nombre:
-Entrada:
-Salida:
-Restriccion:
-Objetivo:
+Nombre:Archivos
+Entrada:no posee
+Salida:no posee
+Restriccion: no posee
+Objetivo: es la clase principal de los archivos de texto
 """
 class Archivos:
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre:__init__
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: crea o abre los arvhivos de texto 
     """
     def __init__(self):
         self.Acceso=open("acceso.txt")
@@ -28,30 +28,30 @@ class Archivos:
         self.Torneos=open("Torneos.txt")
         self.DatoTorneos=self.Torneos.readlines()
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: datosAcceso
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: leer la linea para verificar el acceso
     """
     def datosAcceso(self):
         return self.Acceso.readlines()
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: BuscarIndiceLuchadores
+    Entrada: dato a buscar
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: palabra a buscar el indices para verificar el luchador
     """
     def BuscarIndiceLuchadores(self,buscar):
         datos=self.DatoLuchadores
         return datos.index(buscar)
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: BuscarDatosLuchadores
+    Entrada: luchador a buscar
+    Salida: True o False
+    Restriccion: no posee
+    Objetivo: verificar si esta el luchador en el archivo
     """
     def BuscarDatosLuchadores(self,buscar):
         for linea in self.DatoLuchadores:
@@ -61,11 +61,11 @@ class Archivos:
                 continue
         return True
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: EliminarLuchador
+    Entrada: el luchador a eliminar
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: eliminar un luchador del archivo de texto de luchadores
     """
     def EliminarLuchador(self,eliminar,indice):
         datos=a.DatoLuchadores
@@ -81,11 +81,11 @@ class Archivos:
                 indice+=15
 #---------------------------------------------------------------------------------------------------        
 """
-Nombre:
-Entrada:
-Salida:
-Restriccion:
-Objetivo:
+Nombre: Convertir_A_String
+Entrada: una lista
+Salida: el dato en string
+Restriccion: El parámetro de entrada debe de ser una lista
+Objetivo: convertir una lista en un dato string
 """             
 def Convertir_A_String(lista):
     if isinstance(lista, list):#El parámetro de entrada debe de ser una lista(restricción).
@@ -98,14 +98,21 @@ def Convertir_A_String(lista):
         None
 
 """
-Nombre:
-Entrada:
-Salida:
-Restriccion:
-Objetivo:
+Nombre: DefiniciónDeLosPersonajes
+Entrada: no posee
+Salida: no posee
+Restriccion: no posee
+Objetivo: la clase principal donde se definen los luchadores
 """            
 #PUNTO C#-----------------------------------------------------------------------------
 class DefiniciónDeLosPersonajes:
+    """
+    Nombre: __init__
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: el contrucctor de la definicion de la clase de personajes
+    """ 
     def __init__(self):
         
         self.Tipo=[]
@@ -176,25 +183,32 @@ class DefiniciónDeLosPersonajes:
                 
 #---------------------------------------------------------------------------------------------------
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: verAlterEgo
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: mostrar los alterEgo´s
     """          
     def verAlterEgo(self):
         return self.AlterEgo
 
 #---------------------------------------------------------------------------------------------------
 """
-Nombre:
-Entrada:
-Salida:
-Restriccion:
-Objetivo:
+Nombre: DefiniciónDelTorneo
+Entrada: no posee
+Salida: no posee
+Restriccion: no posee
+Objetivo: es la clase de la definicion de los torneos
 """
 #PUNTO D#----------------------------------------------------------------------------------------
 class DefiniciónDelTorneo:#Punto d
+    """
+    Nombre: __init__
+    Entrada:el nombre,fecha,lugar,numero,luchas
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: es el construcctor de la clase para la definicion del torneo
+    """
     def __init__(self,nombre,fecha,lugar,numero,luchas):
         self.NombreDelTorneo=nombre
         self.Fecha=fecha
@@ -204,11 +218,11 @@ class DefiniciónDelTorneo:#Punto d
         self.BandoGanador=[]
 #---------------------------------------------------------------------------------------------------
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: Mostrar
+    Entrada: no posee
+    Salida: datos del torneo
+    Restriccion: no posee
+    Objetivo: mostrar en el shell los datos del torneo
     """
     def Mostrar(self):
         print(self.NombreDelTorneo)
@@ -220,11 +234,11 @@ class DefiniciónDelTorneo:#Punto d
 
 #---------------------------------------------------------------------------------------------------              
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: agregarPersonajes
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: no posee
     """
     def agregarPersonajes(self):
         return 
@@ -232,14 +246,21 @@ class DefiniciónDelTorneo:#Punto d
 
 #---------------------------------------------------------------------------------------------------
 """
-Nombre:
-Entrada:
-Salida:
-Restriccion:
-Objetivo:
+Nombre: DefiniciónDeLasLuchas
+Entrada: no posee
+Salida: no posee
+Restriccion: no posee
+Objetivo: es la clase de la definicion de las luchas
 """
 #PUNTO E#-------------------------------------------------------------------------------------------
 class DefiniciónDeLasLuchas: #Punto e
+    """
+    Nombre: __init__
+    Entrada: luchadores, raund y el ganador
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: es el construcctor de la clase de la definicion de luchas
+    """
     def __init__(self,luchador1,luchador2,Round1,Round2,Round3,ganador):
         
         self.alterEgoDePrimerLuchador =luchador1
@@ -251,19 +272,19 @@ class DefiniciónDeLasLuchas: #Punto e
 
 #---------------------------------------------------------------------------------------------------    
 """
-Nombre:
-Entrada:
-Salida:
-Restriccion:
-Objetivo:
+Nombre: GranTorino
+Entrada: no posee
+Salida: no posee
+Restriccion: no posee
+Objetivo: la clase principal para iniciar el juego
 """      
 class GranTorino(Archivos):
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: menu
+    Entrada: no posee
+    Salida: una ventana
+    Restriccion: no posee
+    Objetivo: la ventana de control de acceso para poder ingresar al juego
     """
     def menu(self):
         ventana=Tk()
@@ -302,11 +323,11 @@ class GranTorino(Archivos):
                                font=("Times New Roman",14),
                                bg="SteelBlue3", fg="Black").place(x=111,y=250)
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: controlDeAcceso
+        Entrada: los datos ingresados en la ventana
+        Salida: no posee
+        Restriccion: debe estar registrado en el archivo de texto
+        Objetivo: verificar si  el usuario está registrado para aceptarle o negarle el acceso
         """
         def controlDeAcceso():
             nombre=entry1.get()
@@ -337,39 +358,39 @@ class GranTorino(Archivos):
 #-----------------------------------------------------------------------------------------------
 #Ventana del menu principal/Inicial
 """
-Nombre:
-Entrada:
-Salida:
-Restriccion:
-Objetivo:
+Nombre: MenuPrincipal
+Entrada: no posee
+Salida: no posee
+Restriccion: no posee
+Objetivo: clase para el menu principal y se definen funciones para el torneo
 """
 class MenuPrincipal:
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: __init__
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: contructor para definir torneo de la clase principal
     """
     def __init__(self):
         self.Torneos=[]
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: mostrarTorneos
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: mostrar los torneos creados
     """
     def mostrarTorneos(self):
         for dato in self.Torneos:
             dato.Mostrar()
 #---------------------------------------------------------------------------------------------------
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: menuPersonaje
+    Entrada: datos del personaje
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: es la ventana para el menu para la creacion de los pesonajes
     """
     def menuPersonaje(self):
         vtnPersonaje=Tk()
@@ -416,11 +437,11 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black",command= eliminarPersonaje).place(x=10,y=400)
 
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: validarPersonaje
+        Entrada: no posee
+        Salida: no posee
+        Restriccion: el alter ego no debe repetirse
+        Objetivo: añadir el alterego al archivo de texto
         """
         def validarPersonaje():
             a=Archivos()
@@ -439,11 +460,11 @@ class MenuPrincipal:
         boton.place(x=160,y=320)
 #---------------------------------------------------------------------------------------------------
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: menuPersonaje2
+        Entrada: numeros enteros
+        Salida: no posee
+        Restriccion: no posee
+        Objetivo: ventana para añadirles los podores a los personajes creados
         """
         def menuPersonaje2(tipo,sexo,nombre,alterEgo):
             vtnPersonaje.destroy()
@@ -547,11 +568,12 @@ class MenuPrincipal:
             entry15.place(x=200,y=450)
             
             """
-            Nombre:
-            Entrada:
-            Salida:
-            Restriccion:
-            Objetivo:
+            Nombre: validarPoderes
+            Entrada: datos ingresados en los campos de texto
+            Salida: no posee
+            Restriccion: los numeros deben ser enteros positivos y
+                         la suma de ellos debe ser igual a 100
+            Objetivo: validar que se cumplan las restricciones, que se cree y se escriba en el archivo de texto el perosnaje
             """
             def validarPoderes():
                 suma=0
@@ -595,11 +617,11 @@ class MenuPrincipal:
 
 #---------------------------------------------------------------------------------------------------
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: eliminarPersonaje
+    Entrada: el perosnaje a eliminar
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: ventana para pedir datos del personaje a eliminar
     """
     def eliminarPersonaje(self):
         vtnEliminarP=Tk()
@@ -616,7 +638,7 @@ class MenuPrincipal:
         tkinter.Label(vtnEliminarP, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
                       font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
 
-        etiqueta=tkinter.Label(vtnEliminarP,text="Escriba el arte ego del personaje que desea Eliminar:",
+        etiqueta=tkinter.Label(vtnEliminarP,text="Escriba el alter ego del personaje que desea Eliminar:",
                                    font=("Times New Roman",14),
                                    bg="SteelBlue3", fg="Black").place(x=5,y=200)
         eliminarP=tkinter.Entry(vtnEliminarP,text="",
@@ -624,11 +646,11 @@ class MenuPrincipal:
                                bg="SteelBlue1", fg="Red")
         eliminarP.place(x=110,y=230)
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: Eliminar
+        Entrada: datos ingresados en la ventana eliminarPersonaje
+        Salida: luchador eliminado
+        Restriccion: debe existir en el archivo de texto
+        Objetivo: eliminar del archivo de texto el luchador deseado
         """
         def Eliminar():
             if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n"))==False:
@@ -643,16 +665,16 @@ class MenuPrincipal:
                
 
         botonE=tkinter.Button(vtnEliminarP,text="Eliminar Personaje",font=("Times New Roman",14),
-                                     bg="DeepSkyBlue4", fg="red",command=Eliminar)#,command=eliminarPersonajetxt())
+                                     bg="DeepSkyBlue4", fg="red",command=Eliminar)
         botonE.place(x=120,y=275)
 #---------------------------------------------------------------------------------------------------
 
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: menuInicial
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: es el menu principal del juego
     """
     def menuInicial(self):
         ventanaIni=Tk()
@@ -671,11 +693,11 @@ class MenuPrincipal:
 
 #---------------------------------------------------------------------------------------------------
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: Crear
+        Entrada: no posee
+        Salida: no posee
+        Restriccion: no posee
+        Objetivo: boton para crear o borrar algun personaje
         """
         def Crear():
     
@@ -689,11 +711,11 @@ class MenuPrincipal:
         btn1.place(x=50,y=150)
         #
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: Torneo
+        Entrada: no posee 
+        Salida: no posee 
+        Restriccion: no posee 
+        Objetivo: boton para crear o borrar un torneo 
         """
         def Torneo():
 
@@ -710,11 +732,11 @@ class MenuPrincipal:
         btn3.place(x=130,y=235)
         #
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: jugarTorneo5
+        Entrada: no posee
+        Salida: no posee
+        Restriccion: no posee
+        Objetivo: boton para jugar un torneo / boton para salir del juego 
         """
         def jugarTorneo5():
             M.jugarTorneo()
@@ -733,11 +755,11 @@ class MenuPrincipal:
 
 #---------------------------------------------------------------------------------------------------
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: ventanaTorneo
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: ventana del menu del torneo 
     """
     def ventanaTorneo(self):
         ventanaTorneo=Tk()
@@ -784,11 +806,11 @@ class MenuPrincipal:
                                bg="SteelBlue3", fg="Black").place(x=5,y=290)
 #---------------------------------------------------------------------------------------------------
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: manual
+        Entrada: no posee
+        Salida: no posee
+        Restriccion: el numero de lucahs debe ser de 1 a 5 y llenar los espacios
+        Objetivo: verificar que las luchas de manera manual
         """
         def manual():
             
@@ -810,11 +832,11 @@ class MenuPrincipal:
         boton.place(x=10,y=320)
         #
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: JugvsIA7
+        Entrada: no posee
+        Salida: no posee
+        Restriccion: el numero de lucahs debe ser de 1 a 5 y llenar los espacios
+        Objetivo: verificar que las luchas de manera persona vs el programa
         """
         def JugvsIA7():
             if(comboNumLuchas.get()!="")and comboLugar.get()!="" and entry17.get()!="" and entry16.get()!="":
@@ -834,11 +856,11 @@ class MenuPrincipal:
         boton.place(x=10,y=355)
         #
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: IA_aux
+        Entrada: no posee
+        Salida: no posee
+        Restriccion: el numero de lucahs debe ser de 1 a 5 y llenar los espacios
+        Objetivo: verificar que las luchas de manera automatica(programa vs programa)
         """
         def IA_aux():
             if(comboNumLuchas.get()!="")and comboLugar.get()!="" and entry17.get()!="" and entry16.get()!="":
@@ -862,11 +884,11 @@ class MenuPrincipal:
         
 #---------------------------------------------------------------------------------------------------
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: eliminarTorneo
+        Entrada: no posee
+        Salida: no posee
+        Restriccion: no posee
+        Objetivo: tomar datos de entrada del torneo a eliminar
         """
         def eliminarTorneo():
             ventanaTorneo.destroy()
@@ -895,7 +917,13 @@ class MenuPrincipal:
             
             eliminarT=ttk.Combobox(vtnEliminarT, values=Torneo)
             eliminarT.place(x=110,y=230)
-
+            """
+            Nombre: eliminarTorneo
+            Entrada: los datos del campo de entrada
+            Salida: no posee
+            Restriccion: el torneo debe ser existente
+            Objetivo: eliminar el torneo del archivo de texto
+            """
             def eliminarTorneo():
                 if(eliminarT.get()!=""):
                     cont=0
@@ -922,11 +950,11 @@ class MenuPrincipal:
 #--------------------------------------------------------------------------------
         #########menu manual de crear Torneo#####
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: vManual
+    Entrada: los datos del torneo
+    Salida: no posee
+    Restriccion: debe llenar los campos
+    Objetivo: seleccionar los luchadores y contrincantes de forma manual
     """
     def vManual(self,nombre,fecha,lugar,numero):
         vtnPersonaje=Tk()
@@ -1002,11 +1030,11 @@ class MenuPrincipal:
                                 print(5)
 
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: validar3
+        Entrada: los datos seleccionados(luchadores)
+        Salida: no posee
+        Restriccion: no posee
+        Objetivo: validar los datos ingresados para crear la lucha manual
         """
         def validar3():
             if(numero>=1):
@@ -1052,11 +1080,11 @@ class MenuPrincipal:
     
 #-----------------------------------------------------------------------------------
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: JugvsIA
+    Entrada: los datos del torneo
+    Salida: no posee
+    Restriccion: debe seleccionar los luchadores
+    Objetivo: seleccionar tus los luchadores que pelearan conta el programa
     """
     def JugvsIA(self,nombre,fecha,lugar,numero):
         vtnPerIA=Tk()
@@ -1109,11 +1137,11 @@ class MenuPrincipal:
                                 comboHV15.place(x=135,y=280)
 #---------------------------------------------------------------------------------------------------                    
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: CrearT
+        Entrada: los datos del torneo y luchadores
+        Salida: no posee
+        Restriccion: no posee
+        Objetivo: crea el torneo en el cual los jugadores lucharon
         """
         def CrearT():
             P=DefiniciónDeLosPersonajes()
@@ -1156,11 +1184,11 @@ class MenuPrincipal:
 
 #---------------------------------------------------------------------------------------------------                    
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: IA
+    Entrada: los datos del torneo
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: es una lucha con jugadores aleatorios (IA vs IA)
     """
     def IA(self,nombre,fecha,lugar,numero):
         vtnIA=Tk()
@@ -1173,11 +1201,11 @@ class MenuPrincipal:
                       fg="Black").pack(fill=tkinter.X)
 #---------------------------------------------------------------------------------------------------
         """
-        Nombre:
-        Entrada:
-        Salida:
-        Restriccion:
-        Objetivo:
+        Nombre: CrearIA
+        Entrada: no posee
+        Salida: no posee
+        Restriccion: no posee
+        Objetivo: define y crea el torneo con los luchadores
         """
         def CrearIA():
             P=DefiniciónDeLosPersonajes()
@@ -1224,11 +1252,11 @@ class MenuPrincipal:
                 
 #---------------------------------------------------------------------------------------------------
     """
-    Nombre:
-    Entrada:
-    Salida:
-    Restriccion:
-    Objetivo:
+    Nombre: jugarTorneo
+    Entrada: no posee
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: ventana para seleccioanr jugar un torneo creado
     """
     def jugarTorneo(self):
         vtnJuegoT=Tk()
@@ -1251,6 +1279,13 @@ class MenuPrincipal:
             
         comboHV11=ttk.Combobox(vtnJuegoT, values=luchadores)
         comboHV11.place(x=135,y=160)
+        """
+        Nombre: Jugar3
+        Entrada: el torneo
+        Salida: no posee
+        Restriccion: no posee
+        Objetivo: se procede a la lucha del torneo
+        """
         def Jugar3():
             if(comboHV11.get()!=""):
                 print(self.Torneos)
@@ -1265,6 +1300,13 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black",command=Jugar3)
         boton.place(x=160,y=310)
 
+    """
+    Nombre: ResultLuchas
+    Entrada: no posee
+    Salida: estadisticas
+    Restriccion: no posee
+    Objetivo: muestra las estadisticas de las luchas 
+    """
     def ResultLuchas(self,torneo):
         
         for dato in self.Torneos:
