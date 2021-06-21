@@ -1,7 +1,7 @@
-Torneo:El ragnarock
-Fecha:15-11-2021
-Lugar del torneo:Limon
-Numero de luchas:5
-Luchas:30
-Bando ganador:Heroe
---------------------------------
+Ragnarock
+23-3-3232
+Limon
+5
+1
+4
+--------------------------
