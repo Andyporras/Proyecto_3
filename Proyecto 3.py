@@ -1326,6 +1326,7 @@ class MenuPrincipal:
                 vando2=0
                 luchadores=[]
                 for Personaje1 in dato.Luchas:
+                    print(Personaje1)
                     if(cont==1):
                         luchadores+=[Personaje1]
                         cont=0
@@ -1357,6 +1358,7 @@ class MenuPrincipal:
                                     Archivo.write("--------------------------\n")
                                     Archivo.close()
                                     vando1+=1
+                                    luchadores=[]
                                 else:
                                     Archivo=open("Luchas.txt","a")
                                     Archivo.write(luchadores[0]+"\n")
@@ -1367,6 +1369,7 @@ class MenuPrincipal:
                                     Archivo.write("--------------------------\n")
                                     Archivo.close()
                                     vando2+=1
+                                    luchadores=[]
                                     
                                     
                                     
@@ -1401,11 +1404,9 @@ class MenuPrincipal:
         Lc=DefiniciónDeLosPersonajes()
         CaTorneo=0
         CanVillanos=0
-        CanHereos=0
-        HeroeLuPerdidas=0
-        VilLuPerdidas=0
-        HeroeNumTorneo=0
-        VilNumTorneo=0
+        CanHeroes=0
+        
+        
         Archivo=open("Torneos.txt")
         torneos=Archivo.readlines()
         ArchivoL=open("Luchas.txt")
@@ -1413,8 +1414,9 @@ class MenuPrincipal:
         for linea in torneos:
             CaTorneo+=1
         for linea in Lc.Tipo:
+           # print(linea,"Héroe")
             if(linea=="Héroe"):
-                CanHereos+=1
+                CanHeroes+=1
             else:
                 CanVillanos+=1
 
@@ -1424,36 +1426,102 @@ class MenuPrincipal:
         Total=[]
         for indice in  Luchas:
             if(cont==3):
-                if(M.validarVillano(indice)):
-                    Villanos+=[indice]
+                #print(3,indice)
+                if(M.validarVillano(indice[:-1])):
+                 #   print(1)
+                    Villanos+=[indice[:-1]]
                     cont+=1
                 else:
-                    Heroes+=[indice]
+                    Heroes+=[indice[:-1]]
                     cont+=1
+            elif(cont==2):
+                cont+=1
             elif(cont==4):
                 cont+=1
             elif(cont==5):
                 cont=0
                     
             else:
-                Total+=[indice]
+                Total+=[indice[:-1]]
                 cont+=1
+        HeroeLuPerdidas=[]
+        VilLuPerdidas=[]
+        cont=1
+        for indice in Total:
+            if(cont%2)==0:
+                if(M.validarVillano(indice)):
+                    #print(indice,Villanos[cont//2])
+                    if(indice == Luchas[cont//2+3]):
+                        cont+=1
+                        continue
+                    else:
+                        cont+=1
+                        VilLuPerdidas+=[indice]
+                else:
+                    if(indice in Luchas[cont//2+3]):
+                        cont+=1
+                        continue
+                    else:
+                        cont+=1
+                        HeroeLuPerdidas+=[indice]
+            else:
+                if(M.validarVillano(indice[-1])):
+                    if(indice == Luchas[cont//2+3]):
+                        cont+=1
+                        continue
+                    else:
+                        cont+=1
+                        VilLuPerdidas+=[indice]
+                else:
+                    if(indice in Luchas[cont//2+3]):
+                        cont+=1
+                        continue
+                    else:
+                        HeroeLuPerdidas+=[indice]
+                        cont+=1
+        Hero=[]
+        Villa=[]
+        for indice in Total:
+            if(M.validarVillano(indice)):
+                Villa+=[indice]
+            else:
+                Hero+=[indice]
+
+        HeroeNumTorneo=0
+        for indice in Hero:
+            if(mode(Hero)==indice):
+                HeroeNumTorneo+=1
+                
+        VilNumTorneo=0
+        for indice in Villa:
+            if(mode(Villa)==indice):
+                VilNumTorneo+=1
+                    
         
         HeroeLuGanadas=0
-        print(mode(Heroes))
-        VilLuGanadas=mode(Villanos)
-        print(CaTorneo,CanHeroes,CanVillanos,Villanos,Heroes,HeroeLuGanadas,
-              VilLuGanadas,Total)
-        
-
+        VilLuGanadas=0
+        print(f"Cantidad de torneos realizados: {CaTorneo//7}\n Héroes creados:{CanHeroes}\nCantidad de Villanos:{CanVillanos}\n  Héroe con más luchas ganadas: {mode(Heroes)}\n Héroe con más luchas perdidas: {mode(HeroeLuPerdidas)}\n Villano con más luchas ganadas:",
+              mode(Villanos))
+        print(f"Villano con más luchas perdidas:{mode(VilLuPerdidas)}")
+        print(f"El Héroe con más números de torneos que aparece (total):{mode(Hero)} {HeroeNumTorneo}")
+        print(f"El Villano con más números de torneos que aparece (total){mode(Villa)} {VilNumTorneo}")
+    def HeroeGanador(self,Heroe):
+        return mode(Heroe)
+    def VillanoGanador(self,villano):
+        return mode(villano)
 
 
     def validarVillano(self,info):
         Lc=DefiniciónDeLosPersonajes()
         cont=0
         for dato in Lc.Tipo:
+            #print(dato,"Villano")
             if(dato=="Villano"):
+             #   print(5,info[:-1])
+              #  print(cont)
+                #print(info[:-1],Lc.AlterEgo[cont])
                 if(info==Lc.AlterEgo[cont]):
+                    #print(7)
                     return True
                 else:
                     cont+=1
