@@ -3,7 +3,6 @@ import tkinter
 from tkinter import*
 from tkinter import messagebox
 from tkinter import ttk
-#from random import choice
 import random
 from statistics import mode
 
@@ -356,6 +355,78 @@ class GranTorino(Archivos):
         boton=tkinter.Button(ventana,text="Continuar",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black",command=controlDeAcceso)
         boton.place(x=160,y=320)
+        def Crear():
+            ventana.destroy()
+            A.CrearUsuario()
+        boton2=tkinter.Button(ventana,text="Crer nuevo \n Usuario",font=("Times New Roman",13),
+                             bg="DeepSkyBlue4", fg="Black",command=Crear)
+        boton2.place(x=300,y=342)
+
+
+    def CrearUsuario(self):
+        ventana=Tk()
+        ventana.geometry("400x400")
+        ventana.title("Menú Inicio")
+        ventana.config(bg="SteelBlue3", cursor="hand2")
+
+        tkinter.Label(ventana, text="۝   CONTROL DE ACCESO   ۝",
+                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                      fg="Black").pack(fill=tkinter.X)
+        etiqueta=tkinter.Label(ventana,
+                               text="¡Bienvenido !\n Por favor llenar los campos requeridos\nPara Crear su usuario",
+                               font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=45,y=32)
+        tkinter.Label(ventana, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
+                      font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=100)
+
+        entry1=tkinter.Entry(ventana,text="",
+                            font=("Times New Roman",14),
+                            bg="SteelBlue1", fg="Black")
+        entry1.place(x=105,y=160)
+        etiqueta=tkinter.Label(ventana,text="Ingrese su nombre Completo:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=85,y=130)
+        entry2=tkinter.Entry(ventana,text="",
+                            font=("Times New Roman",14),
+                            bg="SteelBlue1", fg="Black")
+        entry2.place(x=105,y=220)
+        etiqueta=tkinter.Label(ventana,text="Ingrese su nombre de Usuario:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=85,y=190)
+        entry3=tkinter.Entry(ventana,text="",show="*",
+                            font=("Times New Roman",14),
+                            bg="SteelBlue1", fg="Black")
+        entry3.place(x=105,y=280)
+        etiqueta=tkinter.Label(ventana,text="Ingrese su Contraseña:",
+                               font=("Times New Roman",14),
+                               bg="SteelBlue3", fg="Black").place(x=111,y=250)
+        def Crear():
+            if(entry1.get()!="")and entry2.get()!="" and entry3.get()!="":
+                nombre=entry1.get()
+                usuario=entry2.get()
+                contraseña=entry3.get()
+                archivo=open("acceso.txt")
+                datos=archivo.readlines()
+                if not((usuario+"\n")in datos):
+                    archivo=open("acceso.txt","a")
+                    archivo.write(nombre+"\n")
+                    archivo.write(f"{usuario}\n")
+                    archivo.write(f"{contraseña}\n")
+                    archivo.write("----------------\n")
+                    archivo.close()
+                    messagebox.showinfo("Agregado","Usuario agregado")
+                    ventana.destroy()
+                    A.menu()
+
+                else:
+                    messagebox.showerror("Error","Ingrese un usuario no existente")
+                    
+            else:
+                messagebox.showerror("Error","Llene los espacios solicitados")
+        
+        boton=tkinter.Button(ventana,text="Continuar",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black",command=Crear)
+        boton.place(x=160,y=320)
+        
 #-----------------------------------------------------------------------------------------------
 #Ventana del menu principal/Inicial
 """
@@ -434,8 +505,11 @@ class MenuPrincipal:
                             bg="SteelBlue1", fg="Black")
         alterEgo.place(x=120,y=280)
         #
+        def eliminarPersonaje_aux():
+            vtnPersonaje.destroy()
+            M.eliminarPersonaje()
         boton=tkinter.Button(vtnPersonaje,text="Eliminar Personaje Existente",font=("Times New Roman",14),
-                             bg="DeepSkyBlue4", fg="Black",command= eliminarPersonaje).place(x=10,y=400)
+                             bg="DeepSkyBlue4", fg="Black",command= eliminarPersonaje_aux).place(x=10,y=400)
 
         """
         Nombre: validarPersonaje
@@ -447,11 +521,12 @@ class MenuPrincipal:
         def validarPersonaje():
             a=Archivos()
             
-            if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+alterEgo.get()+"\n")):
-
-                return menuPersonaje2(comboHV.get(),comboHV2.get(),entry4.get(),alterEgo.get())
-
-                
+            if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+alterEgo.get()+"\n")): 
+                if(alterEgo.get()!="")and comboHV.get()!="" and comboHV2.get()!="" and entry4.get()!="":
+                    M.menuPersonaje2(comboHV.get(),comboHV2.get(),entry4.get(),alterEgo.get())
+                    vtnPersonaje.destroy()
+                else:
+                    messagebox.showerror("Error","Llene los espacios vacios")
             else:
                 messagebox.showerror("Error","El alter ego de su personaje ya existe")
                     
@@ -460,161 +535,142 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black", command=validarPersonaje)
         boton.place(x=160,y=320)
 #---------------------------------------------------------------------------------------------------
-        """
-        Nombre: menuPersonaje2
-        Entrada: numeros enteros
-        Salida: no posee
-        Restriccion: no posee
-        Objetivo: ventana para añadirles los podores a los personajes creados
-        """
-        def menuPersonaje2(tipo,sexo,nombre,alterEgo):
-            vtnPersonaje.destroy()
-            vtnPersonaje2=Tk()
-            vtnPersonaje2.geometry("500x600")
-            vtnPersonaje2.title("Menú Personajes")
-            vtnPersonaje2.config(bg="SteelBlue3", cursor="hand2")
-
-            tkinter.Label(vtnPersonaje2, text="۝    CREACIÓN DE PERSONAJE    ۝",
-                          font=("Times New Roman", 18),bg="RoyalBlue2" ,
-                          fg="Black").pack(fill=tkinter.X)
-            etiqueta=tkinter.Label(vtnPersonaje2,
-                                   text="Crea tu Personaje",
-                                   font=("Times New Roman",14),bg="SteelBlue3", fg="blue4").place(x=190,y=32)
-            etiqueta=tkinter.Label(vtnPersonaje2,
-                                   text="Escribe el numero de la cantidad de habilidades\nque le quieres agregar a tu personaje\nEl total de estas debe ser igual a -100-",
-                                   font=("Times New Roman",13),bg="SteelBlue3", fg="blue4").place(x=80,y=60)
-            #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Velocidad",
+    """
+    Nombre: menuPersonaje2
+    Entrada: numeros enteros
+    Salida: no posee
+    Restriccion: no posee
+    Objetivo: ventana para añadirles los podores a los personajes creados
+    """
+    def menuPersonaje2(self,tipo,sexo,nombre,alterEgo):
+        #vtnPersonaje.destroy()
+        vtnPersonaje2=Tk()
+        vtnPersonaje2.geometry("500x600")
+        vtnPersonaje2.title("Menú Personajes")
+        vtnPersonaje2.config(bg="SteelBlue3", cursor="hand2")
+        cont=[]
+        for num in range(0,101):
+            cont+=[num]
+        tkinter.Label(vtnPersonaje2, text="۝    CREACIÓN DE PERSONAJE    ۝",
+                      font=("Times New Roman", 18),bg="RoyalBlue2" ,
+                      fg="Black").pack(fill=tkinter.X)
+        etiqueta=tkinter.Label(vtnPersonaje2,
+                               text="Crea tu Personaje",
+                               font=("Times New Roman",14),bg="SteelBlue3", fg="blue4").place(x=190,y=32)
+        etiqueta=tkinter.Label(vtnPersonaje2,
+                               text="Escribe el numero de la cantidad de habilidades\nque le quieres agregar a tu personaje\nEl total de estas debe ser igual a -100-",
+                               font=("Times New Roman",13),bg="SteelBlue3", fg="blue4").place(x=80,y=60)
+        #
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Velocidad",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=50,y=130)
-            entry5=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry5.place(x=10,y=160)
-            #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Fuerza",
+        entry5=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry5.place(x=10,y=160)
+        #
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Fuerza",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=55,y=200)
-            entry6=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry6.place(x=10,y=230)
+        entry6=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry6.place(x=10,y=230)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Inteligencia",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Inteligencia",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=55,y=270)
-            entry7=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry7.place(x=10,y=300)
+        entry7=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry7.place(x=10,y=300)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Defensa Personal",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Defensa Personal",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=40,y=350)
-            entry8=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry8.place(x=10,y=380)
+        entry8=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry8.place(x=10,y=380)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Magia",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Magia",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=55,y=420)
-            entry9=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry9.place(x=10,y=450)
+        entry9=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry9.place(x=10,y=450)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Telepatía",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Telepatía",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=250,y=130)
-            entry10=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry10.place(x=200,y=160)
+        entry10=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry10.place(x=200,y=160)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Estrategia",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Estrategia",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=250,y=200)
-            entry11=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry11.place(x=200,y=230)
+        entry11=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry11.place(x=200,y=230)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Volar",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Volar",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=250,y=270)
-            entry12=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry12.place(x=200,y=300)
+        entry12=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry12.place(x=200,y=300)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Volar",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Volar",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=250,y=350)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Elasticidad",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Elasticidad",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=250,y=350)
-            entry14=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry14.place(x=200,y=380)
+        entry14=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry14.place(x=200,y=380)
             #
-            etiqueta=tkinter.Label(vtnPersonaje2,text="Regeneración",
+        etiqueta=tkinter.Label(vtnPersonaje2,text="Regeneración",
                                font=("Times New Roman",12),
                                bg="SteelBlue3", fg="Black").place(x=250,y=420)
-            entry15=tkinter.Entry(vtnPersonaje2,text="",
-                                    font=("Times New Roman",12),
-                                    bg="SteelBlue1", fg="Black")
-            entry15.place(x=200,y=450)
+        entry15=ttk.Combobox(vtnPersonaje2,values=cont)
+        entry15.place(x=200,y=450)
             
-            """
-            Nombre: validarPoderes
-            Entrada: datos ingresados en los campos de texto
-            Salida: no posee
-            Restriccion: los numeros deben ser enteros positivos y
-                         la suma de ellos debe ser igual a 100
-            Objetivo: validar que se cumplan las restricciones, que se cree y se escriba en el archivo de texto el perosnaje
-            """
-            def validarPoderes():
-                suma=0
-                suma+=int(entry5.get())
-                suma+=(int(entry6.get()))+(int(entry7.get()))+(int(entry8.get()))+(int(entry9.get()))
-                suma+=int(entry10.get())
-                suma+=int(entry11.get())
-                suma+=int(entry12.get())
-                suma+=int(entry14.get())
-                suma+=int(entry15.get())
-                if(suma==100):
-                    archivo=open("Luchadores.txt","a")
+        """
+        Nombre: validarPoderes
+        Entrada: datos ingresados en los campos de texto
+        Salida: no posee
+        Restriccion: los numeros deben ser enteros positivos y
+        la suma de ellos debe ser igual a 100
+        Objetivo: validar que se cumplan las restricciones, que se cree y se escriba en el archivo de texto el perosnaje
+        """
+        def validarPoderes():
+            suma=0
+            suma+=int(entry5.get())
+            suma+=(int(entry6.get()))+(int(entry7.get()))+(int(entry8.get()))+(int(entry9.get()))
+            suma+=int(entry10.get())
+            suma+=int(entry11.get())
+            suma+=int(entry12.get())
+            suma+=int(entry14.get())
+            suma+=int(entry15.get())
+            if(suma==100):
+                archivo=open("Luchadores.txt","a")
+                
+                archivo.write("Tipo:"+tipo+"\n")
+                archivo.write("Sexo:"+sexo+"\n")
+                archivo.write("Nombre Completo:"+nombre+"\n")
+                archivo.write("Nombre de su alter ego:"+alterEgo+"\n")
+                archivo.write("velocidad:"+entry5.get()+"\n")
+                archivo.write("Fuerza:"+entry6.get()+"\n")
+                archivo.write("Inteligencia:"+entry7.get()+"\n")                    
+                archivo.write("Defensa Personal: "+entry8.get()+"\n")
+                archivo.write("Magia: "+entry9.get()+"\n")
+                archivo.write("Telepatía:"+entry10.get()+"\n")
+                archivo.write("Estrategia:"+entry11.get()+"\n")
+                archivo.write("Volar:"+entry12.get()+"\n")
+                archivo.write("Elasticidad:"+entry14.get()+"\n")
+                archivo.write("Regeneracion:"+entry15.get()+"\n")
+                archivo.write("--------------------------------------------------"+"\n")
+                archivo.close()
+                vtnPersonaje2.destroy()
+                
+                M.menuInicial()
                     
-                    archivo.write("Tipo:"+tipo+"\n")
-                    archivo.write("Sexo:"+sexo+"\n")
-                    archivo.write("Nombre Completo:"+nombre+"\n")
-                    archivo.write("Nombre de su alter ego:"+alterEgo+"\n")
-                    archivo.write("velocidad:"+entry5.get()+"\n")
-                    archivo.write("Fuerza:"+entry6.get()+"\n")
-                    archivo.write("Inteligencia:"+entry7.get()+"\n")                    
-                    archivo.write("Defensa Personal: "+entry8.get()+"\n")
-                    archivo.write("Magia: "+entry9.get()+"\n")
-                    archivo.write("Telepatía:"+entry10.get()+"\n")
-                    archivo.write("Estrategia:"+entry11.get()+"\n")
-                    archivo.write("Volar:"+entry12.get()+"\n")
-                    archivo.write("Elasticidad:"+entry14.get()+"\n")
-                    archivo.write("Regeneracion:"+entry15.get()+"\n")
-                    archivo.write("--------------------------------------------------"+"\n")
-                    archivo.close()
-                    vtnPersonaje2.destroy()
-                    
-                    M.menuInicial()
-
-                    
-                else:
-                    messagebox.showerror("Error","La suma de las habilidades no suma 100")
+            else:
+                messagebox.showerror("Error","La suma de las habilidades no suma 100")
             
-            boton=tkinter.Button(vtnPersonaje2,text="Crear Personaje",font=("Times New Roman",14),
-                                 bg="DeepSkyBlue4", fg="Black",command=validarPoderes)
-            boton.place(x=350,y=550)
+        boton=tkinter.Button(vtnPersonaje2,text="Crear Personaje",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black",command=validarPoderes)
+        boton.place(x=350,y=550)
 
 #---------------------------------------------------------------------------------------------------
     """
@@ -1394,7 +1450,7 @@ class MenuPrincipal:
         
     def EstadisticasDeltorneo(self):
         vtnEsta=Tk()
-        vtnEsta.geometry("400x450")
+        vtnEsta.geometry("600x450")
         vtnEsta.title("Menú Estadisticas")
         vtnEsta.config(bg="SteelBlue3", cursor="hand2")
         
@@ -1488,40 +1544,53 @@ class MenuPrincipal:
                 Hero+=[indice]
 
         HeroeNumTorneo=0
+        comparar=mode(Hero)
         for indice in Hero:
-            if(mode(Hero)==indice):
+            if(comparar==indice):
                 HeroeNumTorneo+=1
                 
         VilNumTorneo=0
+        comparar2=mode(Villa)
         for indice in Villa:
-            if(mode(Villa)==indice):
+            print(comparar2,indice)
+            if(comparar2==indice):
                 VilNumTorneo+=1
                     
         
         HeroeLuGanadas=0
         VilLuGanadas=0
-        print(f"Cantidad de torneos realizados: {CaTorneo//7}\n Héroes creados:{CanHeroes}\nCantidad de Villanos:{CanVillanos}\n  Héroe con más luchas ganadas: {mode(Heroes)}\n Héroe con más luchas perdidas: {mode(HeroeLuPerdidas)}\n Villano con más luchas ganadas:",
-              mode(Villanos))
-        print(f"Villano con más luchas perdidas:{mode(VilLuPerdidas)}")
-        print(f"El Héroe con más números de torneos que aparece (total):{mode(Hero)} {HeroeNumTorneo}")
-        print(f"El Villano con más números de torneos que aparece (total){mode(Villa)} {VilNumTorneo}")
-    def HeroeGanador(self,Heroe):
-        return mode(Heroe)
-    def VillanoGanador(self,villano):
-        return mode(villano)
+        lista=Listbox(vtnEsta, font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black",
+                      width=55, height=10)
+        lista.pack()
+        lista.insert(0,f"Cantidad de torneos realizados: {CaTorneo//7}")
+        lista.insert(1,f"Héroes creados:{CanHeroes}")
+        lista.insert(2,f"Cantidad de Villanos:{CanVillanos}")
+        lista.insert(3,f"Héroe con más luchas ganadas: {mode(Heroes)}")
+        lista.insert(4,f"Héroe con más luchas perdidas: {mode(HeroeLuPerdidas)}")
+        lista.insert(5,f"Villano con más luchas ganadas:{mode(Villanos)}")
+        lista.insert(6,f"Villano con más luchas perdidas:{mode(VilLuPerdidas)}")
+        lista.insert(7,f"El Héroe con más números de torneos que aparece :{mode(Hero)}")
+        lista.insert(8,f"total:{HeroeNumTorneo}")
+        lista.insert(9,f"El Villano con más números de torneos que aparece: {mode(Villa)}")
+        lista.insert(10,f"total:{VilNumTorneo}")
 
+        def Salir():
+            vtnEsta.destroy()
+            M.menuInicial()
+        boton=tkinter.Button(vtnEsta,text="salir",font=("Times New Roman",14),
+                             bg="DeepSkyBlue4", fg="Black",command=Salir)
+        boton.pack()
+        
 
     def validarVillano(self,info):
         Lc=DefiniciónDeLosPersonajes()
         cont=0
         for dato in Lc.Tipo:
-            #print(dato,"Villano")
+            
             if(dato=="Villano"):
-             #   print(5,info[:-1])
-              #  print(cont)
-                #print(info[:-1],Lc.AlterEgo[cont])
+        
                 if(info==Lc.AlterEgo[cont]):
-                    #print(7)
                     return True
                 else:
                     cont+=1
