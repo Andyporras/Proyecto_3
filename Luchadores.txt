@@ -1,4 +1,4 @@
-Tipo:HÃ©roe
+Tipo:Héroe
 Sexo:Hombre
 Nombre Completo:Bruce Wayne
 Nombre de su alter ego:Batman
