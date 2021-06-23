@@ -287,10 +287,14 @@ class GranTorino(Archivos):
     Objetivo: la ventana de control de acceso para poder ingresar al juego
     """
     def menu(self):
+        
+        
         ventana=Tk()
         ventana.geometry("400x400")
         ventana.title("Menú Inicio")
         ventana.config(bg="SteelBlue3", cursor="hand2")
+        
+        
 
         tkinter.Label(ventana, text="۝   CONTROL DE ACCESO   ۝",
                       font=("Times New Roman", 18),bg="RoyalBlue2" ,
@@ -661,7 +665,10 @@ class MenuPrincipal:
                 archivo.write("Regeneracion:"+entry15.get()+"\n")
                 archivo.write("--------------------------------------------------"+"\n")
                 archivo.close()
+
+                messagebox.showinfo("Agregado","Luchador agregado")
                 vtnPersonaje2.destroy()
+            
                 
                 M.menuInicial()
                     
@@ -826,10 +833,11 @@ class MenuPrincipal:
     """
     def ventanaTorneo(self):
         ventanaTorneo=Tk()
+        
         ventanaTorneo.geometry("450x530")
         ventanaTorneo.title("Menú Torneos")
         ventanaTorneo.config(bg="SteelBlue3", cursor="hand2")
-
+        
         tkinter.Label(ventanaTorneo, text="۩        MENÚ DE TORNEOS        ۩",
                       font=("Times New Roman", 18),bg="RoyalBlue2" ,
                       fg="Black").pack(fill=tkinter.X)
@@ -1098,27 +1106,32 @@ class MenuPrincipal:
                                 T1=DefiniciónDelTorneo(nombre,fecha,lugar,numero,[comboHV.get(),comboHVE.get(),comboHV2.get(),comboHVE2.get(),comboHV3.get(),comboHVE3.get(),
                                                    comboHV4.get(),comboHVE4.get(),comboHV5.get(),comboHVE5.get()])
                                 self.Torneos+=[T1]
+                                messagebox.showinfo("Creado","Torneo Creado")
                                 vtnPersonaje.destroy()
                                 M.menuInicial()
                             else:
                                 T1=DefiniciónDelTorneo(nombre,fecha,lugar,numero,[comboHV.get(),comboHVE.get(),comboHV2.get(),comboHVE2.get(),comboHV3.get(),comboHVE3.get(),
                                                    comboHV4.get(),comboHVE4.get()])
                                 self.Torneos+=[T1]
+                                messagebox.showinfo("Creado","Torneo Creado")
                                 vtnPersonaje.destroy()
                                 M.menuInicial()
                         else:
                             T1=DefiniciónDelTorneo(nombre,fecha,lugar,numero,[comboHV.get(),comboHVE.get(),comboHV2.get(),comboHVE2.get(),comboHV3.get(),comboHVE3.get()])
                             self.Torneos+=[T1]
+                            messagebox.showinfo("Creado","Torneo Creado")
                             vtnPersonaje.destroy()
                             M.menuInicial()
                     else:
                         T1=DefiniciónDelTorneo(nombre,fecha,lugar,numero,[comboHV.get(),comboHVE.get(),comboHV2.get(),comboHVE2.get()])
                         self.Torneos+=[T1]
+                        messagebox.showinfo("Creado","Torneo Creado")
                         vtnPersonaje.destroy()
                         M.menuInicial()
                 else:
                     T1=DefiniciónDelTorneo(nombre,fecha,lugar,numero,[comboHV.get(),comboHVE.get()])
                     self.Torneos+=[T1]
+                    messagebox.showinfo("Creado","Torneo Creado")
                     vtnPersonaje.destroy()
                     M.menuInicial()
                     
@@ -1342,7 +1355,7 @@ class MenuPrincipal:
                 M.menuInicial()
                 vtnJuegoT.destroy()
             else:
-                messagebox.showinfo("Error","debe seleccionar una de las opciones disponible"
+                messagebox.showinfo("Error","debe seleccionar una de las opciones disponible")
                 
         boton=tkinter.Button(vtnJuegoT,text="Jugar",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black",command=Jugar3)
@@ -1356,26 +1369,23 @@ class MenuPrincipal:
     Objetivo: muestra las estadisticas de las luchas 
     """
     def ResultLuchas(self,torneo):
-        
         for dato in self.Torneos:
-            print(dato.NombreDelTorneo,torneo)
             if(dato.NombreDelTorneo==torneo):
                 fecha=dato.Fecha
                 lugar=dato.LugarDelTorneo
                 NumLuchas=dato.NumeroDeLuchas
                 cont=0
-                vando1=0
-                vando2=0
+                bando1=0
+                bando2=0
                 luchadores=[]
                 for Personaje1 in dato.Luchas:
-                    print(Personaje1)
                     if(cont==1):
                         luchadores+=[Personaje1]
                         cont=0
                         cont2=0
                         Victorias=[]
                         
-                        while cont2!=3:
+                        while cont2!=4:
                             Victorias+=random.sample(luchadores,1)
                             cont2+=1
                                 
@@ -1390,7 +1400,6 @@ class MenuPrincipal:
                                     per2+=1
                            else:
                                 if(per1>per2):
-                                   # print(luchadores[0]+"\n",luchadores[1]+"\n",per1+"n",luchadores[0]+"\n",torneo+"\n")
                                     Archivo=open("Luchas.txt","a")
                                     Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(luchadores[1]+"\n")
@@ -1399,7 +1408,7 @@ class MenuPrincipal:
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
                                     Archivo.close()
-                                    vando1+=1
+                                    bando1+=1
                                     luchadores=[]
                                 else:
                                     Archivo=open("Luchas.txt","a")
@@ -1410,28 +1419,30 @@ class MenuPrincipal:
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
                                     Archivo.close()
-                                    vando2+=1
+                                    bando2+=1
                                     luchadores=[]
-                                    
-                                    
-                                    
-                                
-
                     else:
                         luchadores+=[Personaje1]
-                        cont+=1
-
-         #Nombre Torneo’, ‘Fecha’, ‘Lugar’, Numero de luchas, #VictoriasBando1, #VictoriasBando2               
+                        cont+=1              
         else:
             ArchivoT=open("Torneos.txt","a")
             ArchivoT.write(torneo+"\n")
             ArchivoT.write(fecha+"\n")
             ArchivoT.write(lugar+"\n")
             ArchivoT.write(str(NumLuchas)+"\n")
-            ArchivoT.write(str(vando1)+"\n")
-            ArchivoT.write(str(vando2)+"\n")
+            ArchivoT.write(str(bando1)+"\n")
+            ArchivoT.write(str(bando2)+"\n")
             ArchivoT.write("--------------------------\n")
             ArchivoT.close()
+            if(bando1>bando2):
+                messagebox.showinfo("Termino",f"El bando 1 gano con {bando1} victorias")
+            elif(bando1==bando2):
+                messagebox.showinfo("Termino",f"El torneo termino en un empate")
+                
+            else:
+                messagebox.showinfo("Termino",f"El bando 2 gano con{bando2} victorias")
+                
+                
             
     """
     Nombre: EstadisticasDeltorneo
@@ -1462,7 +1473,6 @@ class MenuPrincipal:
         for linea in torneos:
             CaTorneo+=1
         for linea in Lc.Tipo:
-           # print(linea,"Héroe")
             if(linea=="Héroe"):
                 CanHeroes+=1
             else:
@@ -1474,9 +1484,7 @@ class MenuPrincipal:
         Total=[]
         for indice in  Luchas:
             if(cont==3):
-                #print(3,indice)
                 if(M.validarVillano(indice[:-1])):
-                 #   print(1)
                     Villanos+=[indice[:-1]]
                     cont+=1
                 else:
@@ -1498,7 +1506,6 @@ class MenuPrincipal:
         for indice in Total:
             if(cont%2)==0:
                 if(M.validarVillano(indice)):
-                    #print(indice,Villanos[cont//2])
                     if(indice == Luchas[cont//2+3]):
                         cont+=1
                         continue
