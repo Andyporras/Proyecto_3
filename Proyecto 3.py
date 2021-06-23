@@ -68,7 +68,7 @@ class Archivos:
     Objetivo: eliminar un luchador del archivo de texto de luchadores
     """
     def EliminarLuchador(self,eliminar,indice):
-        datos=a.DatoLuchadores
+        datos=self.DatoLuchadores
         cont=0
         
         while len(datos)>=indice:
@@ -710,6 +710,7 @@ class MenuPrincipal:
         Objetivo: eliminar del archivo de texto el luchador deseado
         """
         def Eliminar():
+            a=Archivos()
             if(a.BuscarDatosLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n"))==False:
                indice=a.BuscarIndiceLuchadores("Nombre de su alter ego:"+eliminarP.get()+"\n")
                eliminado=a.EliminarLuchador("Nombre de su alter ego:"+eliminarP.get()+"\n",indice)
@@ -1048,7 +1049,6 @@ class MenuPrincipal:
         luchadores=[]
         
         for linea in datos.AlterEgo:
-            #print(datos.AlterEgo)
             luchadores+=[linea]
         else:
             numero=int(numero)
@@ -1058,34 +1058,29 @@ class MenuPrincipal:
                 comboHVE=ttk.Combobox(vtnPersonaje, values=luchadores)
                 comboHVE.place(x=300,y=160)
                 
-                print(1)
                 if(numero>=2):
                     comboHV2=ttk.Combobox(vtnPersonaje, values=luchadores)
                     comboHV2.place(x=10,y=190)
                     comboHVE2=ttk.Combobox(vtnPersonaje, values=luchadores)
                     comboHVE2.place(x=300,y=190)
-                    print(2)
                     if(numero>=3):
                         
                         comboHV3=ttk.Combobox(vtnPersonaje, values=luchadores)
                         comboHV3.place(x=10,y=220)
                         comboHVE3=ttk.Combobox(vtnPersonaje, values=luchadores)
                         comboHVE3.place(x=300,y=220)
-                        print(3)
                         if(numero>=4):
                                 
                             comboHV4=ttk.Combobox(vtnPersonaje, values=luchadores)
                             comboHV4.place(x=10,y=250)
                             comboHVE4=ttk.Combobox(vtnPersonaje, values=luchadores)
                             comboHVE4.place(x=300,y=250)
-                            print(4)
                             if(numero==5):
 
                                 comboHV5=ttk.Combobox(vtnPersonaje, values=luchadores)
                                 comboHV5.place(x=10,y=280)
                                 comboHVE5=ttk.Combobox(vtnPersonaje, values=luchadores)
                                 comboHVE5.place(x=300,y=280)
-                                print(5)
 
         """
         Nombre: validar3
@@ -1127,8 +1122,6 @@ class MenuPrincipal:
                     vtnPersonaje.destroy()
                     M.menuInicial()
                     
-            else:
-                print("Error")
                 
             
         
@@ -1170,7 +1163,6 @@ class MenuPrincipal:
         luchadores=[]
             
         for linea in datos.AlterEgo:
-            #print(datos.AlterEgo)
             luchadores+=[linea]
                 
         else:
@@ -1341,18 +1333,16 @@ class MenuPrincipal:
         Nombre: Jugar3
         Entrada: el torneo
         Salida: no posee
-        Restriccion: no posee
+        Restriccion: el usuario debe ingresar un dato
         Objetivo: se procede a la lucha del torneo
         """
         def Jugar3():
             if(comboHV11.get()!=""):
-                print(self.Torneos)
-                print(1)
                 M.ResultLuchas(comboHV11.get())
                 M.menuInicial()
                 vtnJuegoT.destroy()
             else:
-                print("Error")
+                messagebox.showinfo("Error","debe seleccionar una de las opciones disponible"
                 
         boton=tkinter.Button(vtnJuegoT,text="Jugar",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black",command=Jugar3)
