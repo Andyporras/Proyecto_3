@@ -1031,11 +1031,7 @@ class MenuPrincipal:
                            text="Elija a los Personajes\ncon los que desea Luchar\njugador1",
                            font=("Times New Roman",15),bg="SteelBlue3", fg="blue4").place(x=135,y=32)
 
-        
-
-        tkinter.Label(vtnPersonaje, text="- - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -  - - -" ,
-                          font=("Arial Black",12),bg="SteelBlue3",fg="Black").place(x=10,y=90)
-
+    
 
 
         etiqueta=tkinter.Label(vtnPersonaje,
@@ -1447,7 +1443,13 @@ class MenuPrincipal:
             ArchivoT.write("--------------------------\n")
             ArchivoT.close()
             
-        
+    """
+    Nombre: EstadisticasDeltorneo
+    Entrada: no posee
+    Salida: estadisticas
+    Restriccion: no posee
+    Objetivo: muestra las estadisticas del juego, lo relevante
+    """
     def EstadisticasDeltorneo(self):
         vtnEsta=Tk()
         vtnEsta.geometry("600x450")
@@ -1575,6 +1577,12 @@ class MenuPrincipal:
         lista.insert(9,f"El Villano con más números de torneos que aparece: {mode(Villa)}")
         lista.insert(10,f"total:{VilNumTorneo}")
 
+        """
+        Nombre: Salir
+        Entrada: no posee
+        Salida: no posee
+        Objetivo: cerrar el juego
+        """
         def Salir():
             vtnEsta.destroy()
             M.menuInicial()
@@ -1582,7 +1590,12 @@ class MenuPrincipal:
                              bg="DeepSkyBlue4", fg="Black",command=Salir)
         boton.pack()
         
-
+    """
+    Nombre: validarVillano
+    Entrada: la informacion ingresada del villano
+    Salida: no posee
+    Objetivo: validar el villano 
+    """
     def validarVillano(self,info):
         Lc=DefiniciónDeLosPersonajes()
         cont=0
