@@ -638,43 +638,48 @@ class MenuPrincipal:
         Objetivo: validar que se cumplan las restricciones, que se cree y se escriba en el archivo de texto el perosnaje
         """
         def validarPoderes():
-            suma=0
-            suma+=int(entry5.get())
-            suma+=(int(entry6.get()))+(int(entry7.get()))+(int(entry8.get()))+(int(entry9.get()))
-            suma+=int(entry10.get())
-            suma+=int(entry11.get())
-            suma+=int(entry12.get())
-            suma+=int(entry14.get())
-            suma+=int(entry15.get())
-            if(suma==100):
-                archivo=open("Luchadores.txt","a")
-                
-                archivo.write("Tipo:"+tipo+"\n")
-                archivo.write("Sexo:"+sexo+"\n")
-                archivo.write("Nombre Completo:"+nombre+"\n")
-                archivo.write("Nombre de su alter ego:"+alterEgo+"\n")
-                archivo.write("velocidad:"+entry5.get()+"\n")
-                archivo.write("Fuerza:"+entry6.get()+"\n")
-                archivo.write("Inteligencia:"+entry7.get()+"\n")                    
-                archivo.write("Defensa Personal: "+entry8.get()+"\n")
-                archivo.write("Magia: "+entry9.get()+"\n")
-                archivo.write("Telepatía:"+entry10.get()+"\n")
-                archivo.write("Estrategia:"+entry11.get()+"\n")
-                archivo.write("Volar:"+entry12.get()+"\n")
-                archivo.write("Elasticidad:"+entry14.get()+"\n")
-                archivo.write("Regeneracion:"+entry15.get()+"\n")
-                archivo.write("--------------------------------------------------"+"\n")
-                archivo.close()
-
-                messagebox.showinfo("Agregado","Luchador agregado")
-                vtnPersonaje2.destroy()
-            
-                
-                M.menuInicial()
+            if(entry5.get()!=""and entry6.get()!="" and entry7.get()!="" and entry8.get()!="" and entry9.get()!="" and entry10.get()!=""
+               and entry11.get()!="" )and entry12.get()!="" and entry14.get()!="" and entry15.get()!="": 
+                suma=0
+                suma+=int(entry5.get())
+                suma+=(int(entry6.get()))+(int(entry7.get()))+(int(entry8.get()))+(int(entry9.get()))
+                suma+=int(entry10.get())
+                suma+=int(entry11.get())
+                suma+=int(entry12.get())
+                suma+=int(entry14.get())
+                suma+=int(entry15.get())
+                if(suma==100):
+                    archivo=open("Luchadores.txt","a")
                     
+                    archivo.write("Tipo:"+tipo+"\n")
+                    archivo.write("Sexo:"+sexo+"\n")
+                    archivo.write("Nombre Completo:"+nombre+"\n")
+                    archivo.write("Nombre de su alter ego:"+alterEgo+"\n")
+                    archivo.write("velocidad:"+entry5.get()+"\n")
+                    archivo.write("Fuerza:"+entry6.get()+"\n")
+                    archivo.write("Inteligencia:"+entry7.get()+"\n")                    
+                    archivo.write("Defensa Personal: "+entry8.get()+"\n")
+                    archivo.write("Magia: "+entry9.get()+"\n")
+                    archivo.write("Telepatía:"+entry10.get()+"\n")
+                    archivo.write("Estrategia:"+entry11.get()+"\n")
+                    archivo.write("Volar:"+entry12.get()+"\n")
+                    archivo.write("Elasticidad:"+entry14.get()+"\n")
+                    archivo.write("Regeneracion:"+entry15.get()+"\n")
+                    archivo.write("--------------------------------------------------"+"\n")
+                    archivo.close()
+
+                    messagebox.showinfo("Agregado","Luchador agregado")
+                    vtnPersonaje2.destroy()
+                
+                    
+                    M.menuInicial()
+                        
+                else:
+                    messagebox.showerror("Error","La suma de las habilidades no suma 100")
             else:
-                messagebox.showerror("Error","La suma de las habilidades no suma 100")
-            
+                messagebox.showerror("Error","debe llenar los espacio solicitados")
+
+                
         boton=tkinter.Button(vtnPersonaje2,text="Crear Personaje",font=("Times New Roman",14),
                              bg="DeepSkyBlue4", fg="Black",command=validarPoderes)
         boton.place(x=350,y=550)
