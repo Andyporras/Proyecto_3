@@ -134,8 +134,6 @@ class DefiniciónDeLosPersonajes:
         Personajes=A.DatoLuchadores
         cont=0
         for linea in Personajes:
-            #print(linea)
-            #print(cont)
             if(cont==0):
                 self.Tipo+=[linea[5:-1]]
                 cont+=1
@@ -1390,7 +1388,7 @@ class MenuPrincipal:
                         cont2=0
                         Victorias=[]
                         
-                        while cont2!=4:
+                        while cont2!=3:
                             Victorias+=random.sample(luchadores,1)
                             cont2+=1
                                 
@@ -1408,7 +1406,9 @@ class MenuPrincipal:
                                     Archivo=open("Luchas.txt","a")
                                     Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(luchadores[1]+"\n")
-                                    Archivo.write(str(per1)+"\n")
+                                    Archivo.write(Victorias[0]+"\n")
+                                    Archivo.write(Victorias[1]+"\n")
+                                    Archivo.write(Victorias[2]+"\n")
                                     Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
@@ -1419,7 +1419,9 @@ class MenuPrincipal:
                                     Archivo=open("Luchas.txt","a")
                                     Archivo.write(luchadores[0]+"\n")
                                     Archivo.write(luchadores[1]+"\n")
-                                    Archivo.write(str(per2)+"\n")
+                                    Archivo.write(Victorias[0]+"\n")
+                                    Archivo.write(Victorias[1]+"\n")
+                                    Archivo.write(Victorias[2]+"\n")
                                     Archivo.write(luchadores[-1]+"\n")
                                     Archivo.write(torneo+"\n")
                                     Archivo.write("--------------------------\n")
@@ -1488,7 +1490,7 @@ class MenuPrincipal:
         Heroes=[]
         Total=[]
         for indice in  Luchas:
-            if(cont==3):
+            if(cont==5):
                 if(M.validarVillano(indice[:-1])):
                     Villanos+=[indice[:-1]]
                     cont+=1
@@ -1499,7 +1501,11 @@ class MenuPrincipal:
                 cont+=1
             elif(cont==4):
                 cont+=1
-            elif(cont==5):
+            elif(cont==3):
+                cont+=1
+            elif(cont==6):
+                cont+=1
+            elif(cont==7):
                 cont=0
                     
             else:
@@ -1556,7 +1562,6 @@ class MenuPrincipal:
         VilNumTorneo=0
         comparar2=mode(Villa)
         for indice in Villa:
-            print(comparar2,indice)
             if(comparar2==indice):
                 VilNumTorneo+=1
                     
