@@ -1,60 +1,32 @@
-El Enterrador
-Kratos
-2
-Kratos
-Valhalla
---------------------------
-Vegeta
-Kronika
-2
-Vegeta
-Valhalla
---------------------------
-El mayor perdedor
 Princesa Diana
-2
+Batman
 Princesa Diana
-Valhalla
---------------------------
-Clark Kent
+Princesa Diana
 Batman
-2
-Clark Kent
-Valhalla
---------------------------
-Pain
-Goku
-2
-Goku
-Valhalla
---------------------------
-Deku
-El mayor perdedor
-2
-Deku
-La purga
---------------------------
-Kratos
-Vegeta
-2
-Kratos
-La purga
---------------------------
-Pain
-Batman
-3
-Batman
-La purga
---------------------------
-Clark Kent
-El Enterrador
-2
-Clark Kent
-La purga
+Princesa Diana
+RA
 --------------------------
 Casador de Piratas
-Kronika
-2
+Pain
+Pain
 Casador de Piratas
-La purga
+Casador de Piratas
+Casador de Piratas
+RA
+--------------------------
+Princesa Diana
+Batman
+Batman
+Batman
+Princesa Diana
+Batman
+RA
+--------------------------
+Casador de Piratas
+Pain
+Pain
+Casador de Piratas
+Pain
+Pain
+RA
 --------------------------
